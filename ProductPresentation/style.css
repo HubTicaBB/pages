@@ -9,6 +9,10 @@
     margin: auto 10%;
 }
 
+a {
+    text-decoration: none;
+}
+
 header,
 nav {
     position: fixed;
@@ -17,13 +21,14 @@ nav {
 
 header {
     background: linear-gradient(#CED8E1, #A8BBCC);
-    height: 3.5em;
+    height: auto;
+    min-height: 3.5em;
     width: 100%;
 }
 
 nav {
+    height: inherit;
     right: 0;
-    text-align: right;
     width: 100%;
 }
 
@@ -34,9 +39,23 @@ nav {
 }
 
 .navbar {
-    float: right;
+    align-content: flex-end;
+    align-items: flex-end;
+    display: inline-flex;
+    flex-flow: row wrap;
+    height: inherit;
+    justify-content: flex-end;
+    min-height: 3.5em;
     margin-left: calc(10% + 9em);
     margin-right: 10%;
+}
+
+.navbar a {
+    flex: 1 1 1;
+    margin-left: 15px;
+    padding-bottom: 4px;
+    padding-left: 0;
+    text-align: right;
 }
 
 .logo > img {
@@ -53,7 +72,7 @@ p {
     margin: 0;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 570px) {
     .content {
         margin: auto 5%;
     }
@@ -61,12 +80,18 @@ p {
     nav {
         background: linear-gradient(#CED8E1, #A8BBCC);
         bottom: 0;
+        height: auto;
         top: auto;
         width: 100%;
     }
 
     .navbar {
-        margin: 0;
+        align-items: center;
+        align-content: center;
+        flex-flow: column nowrap;
+        height: inherit;
+        justify-content: center;
+        margin: 8px 0;
         width: 100%;
     }
 }
