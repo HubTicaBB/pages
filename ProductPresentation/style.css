@@ -100,6 +100,7 @@ a {
 .image-text-flexbox {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
     background-image: url(background3.png);
@@ -128,8 +129,17 @@ a {
 .text-box > * {
     font-size: calc(0.5em + 0.5vw);
     margin: auto 20px 3% 20px;
-    text-align: justify;
-    text-justify: auto;
+}
+
+.text-box li {
+    color: #8c8c8c;
+    border-bottom: 1px solid #8c8c8c;
+    list-style-type: none;
+    line-height: 25px;
+}
+
+#no-border {
+    border: none;
 }
 
 .lead {
@@ -203,6 +213,19 @@ summary {
     100% {
         left: 0;
     }
+}
+
+.banner {
+    background: linear-gradient(#CED8E1, #688199);
+}
+
+.banner p {
+    color: white;
+    font-size: 3vw;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 @media screen and (max-width: 767px) {
