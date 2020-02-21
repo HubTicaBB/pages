@@ -73,8 +73,26 @@ nav {
     width: inherit;
 }
 
-.main-content {
+.startpage {
     margin-top: 3.5em;
+}
+
+.startpage {
+    background-image: url(home.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 45vw;
+}
+
+.startpage h1 {
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 45vw;
+    display: flex;
+    font-size: calc(0.8em + 1.5vw);
+    margin: 0;
+    text-transform: uppercase;
 }
 
 p {
