@@ -8,8 +8,7 @@
 
 header {
     background: linear-gradient(#CED8E1, #A8BBCC);
-    height: auto;
-    min-height: 3.5em;
+    height: 3.5em;
     width: 100%;
 }
 
@@ -123,12 +122,11 @@ a {
 
 .text-box {
     background-image: url(background.png);
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .text-box > * {
     font-size: calc(0.5em + 0.5vw);
-    line-height: 20px;    
     margin: auto 20px 3% 20px;
     text-align: justify;
     text-justify: auto;
@@ -147,6 +145,72 @@ a {
 
 summary {
     color: #3A70A2;
+}
+
+#slider {
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+}
+
+#slider figure img {
+    width: 20%;
+    float: left;
+}
+
+#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    animation: 10s slideshow infinite;
+}
+
+@keyframes slideshow {
+    10% {
+        left: 0;
+    }
+
+    20% {
+        left: 0;
+    }
+
+    30% {
+        left: -100%;
+    }
+
+    40% {
+        left: -100%;
+    }
+
+    50% {
+        left: -200%;
+    }
+
+    60% {
+        left: -200%;
+    }
+
+    70% {
+        left: -300%;
+    }
+
+    80% {
+        left: -300%;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #slider {
+        overflow: hidden;
+        width: 100%;
+        margin: 0 auto;
+    }
 }
 
 @media screen and (max-width: 655px) {
@@ -176,7 +240,7 @@ summary {
         font-size: 0.7em;
     }
 
-    .container {
+    .content {
         margin-bottom: 144.8px;
     }
 }
