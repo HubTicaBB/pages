@@ -266,12 +266,27 @@ table {
     width: 25%;
 }
 
-h2 {
+#variants h2 {
     text-transform: uppercase;
 }
 
 h3 {
-    margin-bottom: 0;
+    margin: 0;
+    font-size: 0.8em;
+}
+
+#sustainability > .image-text-flexbox {
+    background-image: none;
+}
+
+.index-box {
+    width: 33%;
+    text-align: center;
+}
+progress {
+    width: 90%;
+    height: 2em;
+    margin: 10px;
 }
 
 @media screen and (max-width: 767px) {
