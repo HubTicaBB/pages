@@ -9,11 +9,12 @@
 header {
     background: linear-gradient(#CED8E1, #A8BBCC);    
     width: 100%;
+    z-index: 99;
 }
 
 header,
 .logo {
-    height: 11.5vw;
+    height: 5.5vw;
 }
 
 header,
@@ -34,7 +35,7 @@ nav {
 
 .logo > img {
     filter: opacity(70%);
-    height: 10vw;
+    height: 4vw;
     margin-left: 0.5em;
     margin-top: 1vw;
     width: auto;
@@ -44,7 +45,7 @@ nav {
     height: inherit;
     text-align: right;
     right: 0;
-    width: 100%;
+    width: 100%;    
 }
 
 .navbar {
@@ -54,15 +55,15 @@ nav {
     flex-flow: row wrap;
     height: inherit;
     justify-content: flex-end;
-    min-height: 11.5vw;    
+    min-height: 5vw;    
     margin-right: 10%;
-    max-width: 48%;
+    max-width: 65%;
     padding-right: 0.5vw;
 }
 
 .navbar a {
     color: white;
-    flex: 1 1 1;
+    flex: 0 1 auto;
     font-size: calc(0.5em + 0.5vw);
     font-weight: bold;
     margin-left: 15px;
@@ -81,10 +82,10 @@ a {
 
 .startpage {
     background-image: url(home.png);
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
-    height: 44vw;
-    margin-top: 11.5vw;
+    background-size: cover;
+    margin-top: 5vw;
 }
 
 .startpage h1 {
@@ -295,6 +296,18 @@ progress {
     margin: 10px;
 }
 
+footer {    
+    font-size: 1em;
+}
+
+footer p {
+    margin: 1em;
+}
+
+footer > div {
+    margin: auto 10%;
+}
+
 @media screen and (max-width: 767px) {
     #slider {
         overflow: hidden;
@@ -309,7 +322,17 @@ progress {
     }
 
     footer {
-        margin-bottom: 144.8px;
+        margin-bottom: 116.8px;
+    }
+
+    header,
+    .logo {
+        height: 10vw;
+    }
+
+    .logo > img {
+    filter: opacity(70%);
+    height: 8.5vw;
     }
 
     nav {
@@ -333,6 +356,7 @@ progress {
 
     .navbar a {
         font-size: 0.7em;
+        padding-bottom: 0;
     }
 }
 
@@ -372,4 +396,3 @@ progress {
         margin-top: 20px;
     }
 }
-
