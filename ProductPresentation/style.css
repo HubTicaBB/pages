@@ -7,9 +7,13 @@
 }
 
 header {
-    background: linear-gradient(#CED8E1, #A8BBCC);
-    height: 3.5em;
+    background: linear-gradient(#CED8E1, #A8BBCC);    
     width: 100%;
+}
+
+header,
+.logo {
+    height: 11.5vw;
 }
 
 header,
@@ -18,10 +22,10 @@ nav {
     top: 0;
 }
 
-.logo {
-    float: left;
-    height: 3em;
-    width: 9em;
+.content.logo {
+    float: left;   
+    width: auto;
+    margin-right: 0;
 }
 
 .content {
@@ -30,10 +34,10 @@ nav {
 
 .logo > img {
     filter: opacity(70%);
-    height: inherit;
+    height: 10vw;
     margin-left: 0.5em;
-    margin-top: 0.3em;
-    width: inherit;
+    margin-top: 1vw;
+    width: auto;
 }
 
 nav {
@@ -50,9 +54,10 @@ nav {
     flex-flow: row wrap;
     height: inherit;
     justify-content: flex-end;
-    min-height: 3.5em;
-    margin-left: calc(10% + 9em);
+    min-height: 11.5vw;    
     margin-right: 10%;
+    max-width: 48%;
+    padding-right: 0.5vw;
 }
 
 .navbar a {
@@ -79,7 +84,7 @@ a {
     background-repeat: no-repeat;
     background-size: 100%;
     height: 44vw;
-    margin-top: 3.5em;
+    margin-top: 11.5vw;
 }
 
 .startpage h1 {
@@ -323,6 +328,7 @@ progress {
         justify-content: center;
         margin: 8px 0;
         width: 100%;
+        max-width: initial;
     }
 
     .navbar a {
