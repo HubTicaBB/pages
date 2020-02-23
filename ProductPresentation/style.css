@@ -283,6 +283,7 @@ h3 {
     width: 33%;
     text-align: center;
 }
+
 progress {
     width: 90%;
     height: 2em;
@@ -299,7 +300,11 @@ progress {
 
 @media screen and (max-width: 655px) {
     .content {
-        margin: auto 5%;
+        margin: auto 5% ;
+    }
+
+    footer {
+        margin-bottom: 144.8px;
     }
 
     nav {
@@ -322,10 +327,6 @@ progress {
 
     .navbar a {
         font-size: 0.7em;
-    }
-
-    .content {
-        margin-bottom: 144.8px;
     }
 }
 
