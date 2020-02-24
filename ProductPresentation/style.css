@@ -26,7 +26,6 @@ nav {
 .content.logo {
     float: left;   
     width: auto;
-    margin-right: 0;
 }
 
 .content {
@@ -85,7 +84,7 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 5vw;
+    margin-top: 5.5vw;
 }
 
 .startpage h1 {
@@ -105,14 +104,14 @@ a {
 
 .image-text-flexbox {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     margin: 0;
     padding: 0;
 }
 
 .image-box {
     width: 65%;
+    height: auto;
     margin: 0;
     padding: 0;
 }
@@ -128,18 +127,22 @@ a {
 .image-box > img {
     width: 100%;
     height: 100%;
+    display: block; /* remove extra space below image */
 }
 
 .function1 {
     background-image: url(functions1-background.png);
+    background-size: cover;
 }
 
 .function3 {
     background-image: url(functions3-background.png);
+    background-size: cover;
 }
 
 .function2 {
     background-image: url(functions2-background.png);
+    background-size: cover;
 }
 
 #productinformation .text-box {
@@ -257,11 +260,10 @@ summary {
 }
 
 #variant-flexbox {
-    background-image: none;
     border-bottom: 1px grey solid;
 }
 
-#table-box {
+.table-box {
     width: 60%;
     margin-bottom: 10px;
 }
@@ -361,7 +363,6 @@ footer > div {
         align-items: center;
         align-content: center;
         flex-flow: column nowrap;
-        height: inherit;
         justify-content: center;
         margin: 8px 0;
         width: 100%;
@@ -395,14 +396,12 @@ footer > div {
 
     .image-text-flexbox > *,
     #table-box,
-    #variant-img-box 
-    .bild-artikel {
+    #variant-img-box {
         width: 100%;
     }
 
     .text-box {
         padding: 30px 0;
-        background-image: url(background2.png);
     }
 
     p {
