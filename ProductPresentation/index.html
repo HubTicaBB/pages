@@ -13,7 +13,7 @@
 
     <header>
         <div class="logo content">
-            <img src="logo.png" />
+            <img src="./img-resources/logo.png" />
         </div>
         <nav>
             <div class="navbar">
@@ -22,30 +22,31 @@
                 <a href="#functions">Funktioner</a>
                 <a href="#variants">Varianter</a>
                 <a href="#sustainability">Hållbarhet</a>               
-                <a href="#contact.html">Kontakt</a>
+                <a href="#contact">Kontakt</a>
             </div>
         </nav>
     </header>
 
     <main class="content">
 
-        <div class="startpage">
+        <div id="startpage">
             <h1>Den ultimata arbetsstolen</h1>
         </div>
 
+        <!--Produktinformation-->
         <div id="productinformation" class="container">
-            <div class="image-text-flexbox">
-                <div class="image-box">
-                    <img alt="Kontorstol Capella" src="productinfo.png" />
+            <div class="flexbox">
+                <div class="flex-image">
+                    <img alt="Kontorstol Capella" src="./img-resources/productinfo.png" />
                 </div>
-                <div class="text-box">
+                <div class="flex-article">
                     <p>
                         <span class="lead">Sittandets konst. </span>
                         75 år av erfarenhet. En stol. Vi har lagt in all vår kunskap i Capella.
                         Den främjar aktivt sittande och erbjuder det bästa inom funktion, estetik
                         och välbefinnande.
-                        <details class="read-more">
-                            <summary>Läs mer</summary>
+                        <details>
+                            <summary>Läs mer</summary><br />
                             Capella är en ny typ av arbetsstol. Skapad för att få din kropp i rörelse.
                             Att sitta rätt handlar nämligen om att röra på sig. Kärnan i Capella är den
                             nyutvecklade innovativa FreeMotion-mekanismen. Den ger välbalanserade
@@ -56,6 +57,13 @@
                             Och har många inställningsmöjligheter för att du ska hitta din optimala
                             sittställning. Med de intuitiva reglagen gör du även enkelt stolen till din
                             egen.
+                            <br /><br />
+                            Capella är tilltalande och väldesignad. Med rena linjer och enkel geometri.
+                            Det är en stol med hög kvalitet och fokus på hållbarhet. Capella har också
+                            siktet inställt på dagens kreativa och flexibla sätt att arbeta. Genom att den
+                            är så användarvänlig och enkel att ställa in passar den bra in i aktivitetsbaserade
+                            arbetsmiljöer, där samma stol används av olika personer i olika typer av
+                            situationer under en arbetsdag.
                         </details>
                     </p>
                 </div>
@@ -63,53 +71,59 @@
 
         </div>
 
+        <!--Inspiration-->
         <div id="inspiration" class="container">
             <div class="banner">
-                <p>Skapa unika lösningar med Capella</p>
+                <h2>Skapa unika lösningar med Capella</h2>
             </div>
             <div id="slider">
                 <figure>
-                    <img src="slide1.png" />
-                    <img src="slide2.png" />
-                    <img src="slide3.png" />
-                    <img src="slide4.png" />
+                    <img src="./img-resources/slide1.png" />
+                    <img src="./img-resources/slide2.png" />
+                    <img src="./img-resources/slide3.png" />
+                    <img src="./img-resources/slide4.png" />
                 </figure>
             </div>
         </div>
 
+        <!--Funktioner-->
         <div id="functions" class="container">
-            <div class="image-text-flexbox">
-                <div class="image-box">
-                    <img alt="Freemotion Feature" src="functions1.png" />
+            <div class="banner">
+                <h2>Freemotion&#174 får dig i rörelse</h2>
+            </div>
+            <div class="flexbox">
+                <div class="flex-image">
+                    <img alt="Freemotion Feature" src="./img-resources/functions1.png" />
                 </div>
-                <div class="text-box function1">
+                <div class="flex-article function1">
                     <p>
-                        <span class="lead">Vår nya Freemotion feature adderar rörelse till stillasittande</span><br /><br />
+                        <span class="lead">Vår nya Freemotion&#174 feature adderar rörelse till stillasittande</span><br /><br />
                         Med mikrorörelser i sätet får FreeMotion din kropp att röra sig, även när du
                         sitter ner. Detta förbättrar avsevärt din energinivå, ditt välbefinnande och
                         hjälper dig att göra ett bättre jobb.
                     </p>
                 </div>
-                <div class="text-box function2">
+                <div class="flex-article function2">
                     <p>
-                        <span class="lead">
-                            Capellas ryggstöd har designats för att följa din ryggrads
-                            naturliga kurva
-                        </span>
+                        <span class="lead">Capellas ryggstöd har designats för att följa din ryggradsnaturliga kurva</span><br /><br />
+                        Stolsryggen är noga utformad för att följa konturen av din
+                        ryggrad. För extra komfort kan även ryggvinkeljustering och svankstöd
+                        väljas till. De nya multifunktionella armstöden är enkla att ställa in som du
+                        vill ha dem. De går även att få väldigt nära kroppen på ett enklare och mer
+                        intuitivt sätt.
                     </p>
                 </div>
-                <div class="image-box">
-                    <img alt="Ryggstöd" src="functions2.png" />
+                <div class="flex-image">
+                    <img alt="Ryggstöd" src="./img-resources/functions2.png" />
                 </div>
 
-                <div class="image-box">
-                    <img alt="Anpassning" src="functions3.png" />
+                <div class="flex-image">
+                    <img alt="Anpassning" src="./img-resources/functions3.png" />
                 </div>
-                <div class="text-box function3">
+                <div class="flex-article function3">
                     <p>
-                        <span class="lead">
-                            Allt kan anpassas efter din kropp
-                        </span>
+                        <span class="lead">Allt kan anpassas efter din kropp</span><br /><br />
+                        Capella är en aktiv stol. En stol som anpassas efter dig iställetv för tvärtom.
                         <ul>
                             <li>Nackstöd</li>
                             <li>Rygg</li>
@@ -124,8 +138,11 @@
 
         </div>
 
+        <!--Varianter-->
         <div id="variants" class="container">
-            <h2>Varianter</h2>
+            <div class="banner">
+                <h2>Bygg din egen stol</h2>
+            </div>
 
             <div>
                 <h3>CF110</h3>
@@ -134,8 +151,8 @@
                     och gasfjäder i svart.
                 </p>
             </div>
-            <div id="variant-flexbox" class="image-text-flexbox">
-                <div id="table-box">
+            <div class="flexbox">
+                <div class="flex-article">
                     <table>
                         <tr>
                             <td class="specification">Sittdjup (mm)</td>
@@ -155,8 +172,8 @@
                         </tr>
                     </table>
                 </div>
-                <div id="variant-img-box">
-                    <img alt="CF110" src="CF110.png" />
+                <div class="flex-image">
+                    <img alt="CF110" src="./img-resources/CF110.png" />
                 </div>
             </div>
 
@@ -167,8 +184,8 @@
                     i svart.
                 </p>
             </div>
-            <div id="variant-flexbox" class="image-text-flexbox">
-                <div id="table-box">
+            <div class="flexbox">
+                <div class="flex-article">
                     <table>
                         <tr>
                             <td class="specification">Sittdjup (mm)</td>
@@ -192,8 +209,8 @@
                         </tr>
                     </table>
                 </div>
-                <div id="variant-img-box">
-                    <img alt="CF111" src="CF111.png" />
+                <div class="flex-image">
+                    <img alt="CF111" src="./img-resources/CF111.png" />
                 </div>
             </div>
 
@@ -204,8 +221,8 @@
                     gasfjäder i svart. Hjul för hårda golv.
                 </p>
             </div>
-            <div id="variant-flexbox" class="image-text-flexbox">
-                <div id="table-box">
+            <div class="flexbox">
+                <div class="flex-article">
                     <table>
                         <tr>
                             <td class="specification">Sittdjup (mm)</td>
@@ -225,8 +242,8 @@
                         </tr>
                     </table>
                 </div>
-                <div id="variant-img-box">
-                    <img alt="CF120" src="CF120.png" />
+                <div class="flex-image">
+                    <img alt="CF120" src="./img-resources/CF120.png" />
                 </div>
             </div>
 
@@ -237,8 +254,8 @@
                     gasfjäder i svart. Hjul för hårda golv.
                 </p>
             </div>
-            <div id="variant-flexbox" class="image-text-flexbox">
-                <div id="table-box">
+            <div class="flexbox">
+                <div class="flex-article">
                     <table>
                         <tr>
                             <td class="specification">Sittdjup (mm)</td>
@@ -262,14 +279,17 @@
                         </tr>
                     </table>
                 </div>
-                <div id="variant-img-box">
-                    <img alt="CF121" src="CF121.png" />
+                <div class="flex-image">
+                    <img alt="CF121" src="./img-resources/CF121.png" />
                 </div>
             </div>
         </div>
 
+        <!--Hållbarhet-->
         <div id="sustainability" class="container">
-            <h2>The Better Effect Index</h2>
+            <div class="banner">
+                <h2>The Better Effect Index</h2>
+            </div>
             <p>Hållbarhetsbetyg för Capella</p>
             <details>
                 <summary>Vad är det här?</summary>
@@ -285,7 +305,7 @@
                 är ett snitt av poängen på områdena.
             </details>
             <br />
-            <div class="image-text-flexbox">
+            <div class="flexbox">
                 <div class="index-box">
                     <h3>Råvaror och resurser</h3>
                     <progress value="2.7" max="3">2.7</progress>
@@ -316,7 +336,7 @@
     </main>
 
     <footer>
-        <div class="image-text-flexbox">
+        <div id="contact">
             <div>
                 <h5>Kontakt</h5>
                 <p>Kinnarps Sverige<br />Fannys väg 5<br />131 54 Nacka</p>
