@@ -337,17 +337,58 @@ progress {
 }
 
 footer {
-    font-size: calc(0.5vh + 0.5vw);
+    font-size: calc(1vh + 0.4vw);
     background: linear-gradient(#CED8E1, #A8BBCC);
     width: 100%;
 }
 
-footer p {
-    margin: 1em;
-}
-
 footer > div {
     margin: auto 10%;
+}
+
+.table {
+    display: table;
+    width: 100%;
+}
+
+.table > div {
+    display: table-row;
+}
+
+.table > div > div {
+    display: table-cell;
+    width: 33%;    
+    vertical-align: middle;
+}
+
+.address {
+    text-align: left;
+}
+
+.contact {
+    text-align: center;
+}
+
+.social-networks {
+    font-size: calc(1.3vh + 1.3vw);
+    text-align: right;
+}
+
+i.fa-facebook-square {
+    text-decoration: none;
+    color: #3B5998;
+}
+
+i.fa-instagram {
+    color: #E6005C;
+}
+
+i.fa-twitter {
+    color: #00ACEE;
+}
+
+i.fa-linkedin {
+    color: #0E76A8;
 }
 
 @media screen and (max-width: 767px) {
@@ -369,7 +410,7 @@ footer > div {
     }
 
     footer {
-        margin-bottom: 116.8px;
+        margin-bottom: 102.4px;
     }
 
     header,
@@ -439,7 +480,7 @@ footer > div {
         margin: auto;
     }
 
-    p {
+    main p {
         margin-top: 20px;
     }
 
@@ -447,3 +488,6 @@ footer > div {
         margin-top: 0;
     }
 }
+
+
+
