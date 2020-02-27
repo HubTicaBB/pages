@@ -311,7 +311,7 @@ summary {
     width: 25%;
 }
 
-h3 {
+#variants h3 {
     margin: 10px 0;
     font-size: 2vh;
 }
