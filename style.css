@@ -308,7 +308,7 @@ summary {
 }
 
 #variants > .flexbox > article > h3 {
-    margin: 10px;
+    margin: 10px 0;
     font-size: 2vh;
 }
 
