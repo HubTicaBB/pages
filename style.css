@@ -296,7 +296,7 @@ summary {
     height: auto;
 }
 
-#variants > .flexbox > article > * {
+#variants table {
     margin: 0;
     width: 100%;
 }
@@ -312,7 +312,7 @@ summary {
 }
 
 #variants h3 {
-    margin: 10px 0;
+    margin: 10px;
     font-size: 2vh;
 }
 
