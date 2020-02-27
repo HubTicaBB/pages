@@ -24,10 +24,11 @@ nav {
 }
 
 .logo {
-    float: left;   
+    float: left;
     width: auto;
 }
 
+footer > div,
 .content {
     margin: auto 10%;
 }
@@ -41,7 +42,6 @@ nav {
 }
 
 nav {
-    height: inherit;
     text-align: right;
     right: 0;
     width: 100%;    
@@ -88,10 +88,7 @@ li {
 }
 
 #startpage {
-    background-image: url(./img-resources/home.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url(./img-resources/home.png);    
     margin-top: 5.5vw;
 }
 
@@ -138,7 +135,6 @@ article > *,
 #productinformation article {
     width: 50%;
     background-image: url("./img-resources/productinfo-background.png");
-    background-size: cover;
 }
 
 #functions > .flexbox > figure {
@@ -173,17 +169,20 @@ figure {
 
 .function1 {
     background-image: url(./img-resources/functions1-background.png);
-    background-size: cover;
 }
 
 .function3 {
     background-image: url(./img-resources/functions3-background.png);
-    background-size: cover;
 }
 
 .function2 {
     background-image: url(./img-resources/functions2-background.png);
+}
+
+.background-cover {
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 article li {
@@ -332,10 +331,6 @@ footer {
     width: 100%;
 }
 
-footer > div {
-    margin: auto 10%;
-}
-
 .table {
     display: table;
     width: 100%;
@@ -440,7 +435,6 @@ i.fa-linkedin {
 @media screen and (max-height: 450px) and (max-width: 655px) {
     .navbar {
         text-align: center;
-        align-content: space-evenly;
         flex-flow: row wrap;
         margin: 0;
     }
