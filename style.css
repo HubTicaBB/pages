@@ -6,6 +6,10 @@ body {
     padding: 0;
 }
 
+p {
+
+}
+
 header {
     background: linear-gradient(#CED8E1, #A8BBCC);    
     width: 100%;
@@ -28,7 +32,7 @@ nav {
     width: auto;
 }
 
-footer > div,
+footer .flexbox,
 .content {
     margin: auto 10%;
 }
@@ -63,7 +67,6 @@ nav {
 .navbar a {
     color: white;
     flex: 0 1 auto;
-    font-size: calc(0.5em + 0.5vw);
     font-weight: bold;
     margin-left: 15px;
     padding-bottom: 4px;
@@ -94,11 +97,11 @@ li {
 
 h1 {
     align-items: center;
+    font-size: calc(2vw + 1.5vh);
     justify-content: center;
     color: white;
     height: 44vw;
     display: flex;
-    font-size: 4vw;
     margin: 0;
     text-transform: uppercase;
 }
@@ -114,26 +117,14 @@ h1 {
     padding: 0;
 }
 
-article > * {
-    margin: 10%;
+#productinformation article {
+    background-image: url("./img-resources/productinfo-background.png");
 }
 
-#variants article h2 {
-    margin: 3% 0;
-}
 
-article > *,
-#sustainability p,
-#sustainability details {
-    font-size: calc(1.5vh + 0.2vw);
-}
 
 .half-screen {
     width: 50%;
-}
-
-#productinformation article {
-    background-image: url("./img-resources/productinfo-background.png");
 }
 
 figure {
@@ -148,7 +139,7 @@ figure {
 
 .flexbox img {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block; /* remove extra space below image */
 }
 
@@ -187,10 +178,26 @@ article li {
     border: none;
 }
 
-article h2 {
+article h2,
+article p,
+article details,
+article ul,
+article table {
+    margin: 3% 10%;
+}
+
+h2 {    
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+details,
+ul,
+table,
+p,
+h2 {
+    font-size: 1.25vmax;
 }
 
 summary {
@@ -261,15 +268,11 @@ summary {
 
 .banner h2 {
     color: white;
-    font-size: 3vw;
+    font-size: calc(1vw + 1.5vh);
     margin: 0;
     padding: 20px;
     text-align: center;
     text-transform: uppercase;
-}
-
-#variants p {
-    font-size: 1.7vh;
 }
 
 #variants > .flexbox {
@@ -277,19 +280,14 @@ summary {
 }
 
 .two-thirds-screen {
-    width: 65%;
+    width: 67%;
 }
 
 .one-third-screen {
-    width: 35%;
+    width: 33%;
 }
 
-#variants > .flexbox > article {    
-    margin-left: 0;
-}
-
-#variants figure {
-    
+#variants figure {    
     height: auto;
 }
 
@@ -308,8 +306,7 @@ summary {
     width: 25%;
 }
 
-.index-box {
-    width: 33%;
+#sustainability h2 {
     text-align: center;
 }
 
@@ -320,37 +317,28 @@ progress {
 }
 
 footer {
-    font-size: calc(1vh + 0.4vw);
     background: linear-gradient(#CED8E1, #A8BBCC);
     width: 100%;
+    text-align: center;
+    line-height: 25px;
 }
 
-.table {
-    display: table;
-    width: 100%;
-}
-
-.table > div {
-    display: table-row;
-}
-
-.table > div > div {
-    display: table-cell;
-    width: 33%;    
-    vertical-align: middle;
-}
-
-.address {
-    text-align: left;
+footer p {
+    font-size: 15px;
+    height: 100%;
 }
 
 .contact {
-    text-align: center;
+    margin: 20px auto;
+}
+
+.address,
+.social-networks {
+    margin: auto;
 }
 
 .social-networks {
-    font-size: calc(1.3vh + 1.3vw);
-    text-align: right;
+    font-size: 2em;    
 }
 
 i.fa-facebook-square {
@@ -370,11 +358,51 @@ i.fa-linkedin {
     color: #0E76A8;
 }
 
+@media screen and (min-width: 1501px) {
+    details,
+    ul,
+    table,
+    p,
+    h2 {
+        font-size: 1vmax;
+    }
+}
+
 @media screen and (max-width: 767px) {
     #slider {
         overflow: hidden;
         width: 100%;
         margin: 0 auto;
+    }
+
+    .flexbox {
+        flex-direction: column;
+    }
+
+    .half-screen,
+    .one-third-screen,
+    .two-thirds-screen {
+        width: 100%;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    details,
+    ul,
+    table,
+    p,
+    h2 {
+        font-size: 2.2vmax;
+    }
+
+    .contact {
+        margin: auto;
+    }
+
+    .social-networks {
+        margin-bottom: 20px;
     }
 }
 
@@ -385,11 +413,11 @@ i.fa-linkedin {
     }
 
     main.content {
-        margin-top: 10vw;
+        margin: 10vw 5%;
     }
 
     footer {
-        margin-bottom: 102.4px;
+        margin-bottom: 126.4px;
     }
 
     header,
@@ -418,10 +446,10 @@ i.fa-linkedin {
         margin: 8px 0;
         width: 100%;
         max-width: initial;
+        font-size: 15px;
     }
 
     .navbar a {
-        font-size: 0.7em;
         padding-bottom: 0;
     }
 }
@@ -439,14 +467,4 @@ i.fa-linkedin {
 }
 
 @media screen and (max-width: 575px) {
-    .flexbox {
-        flex-direction: column;
-    }
-
-    .half-screen,
-    .one-third-screen,
-    .two-thirds-screen,
-    .index-box {
-        width: 100%;
-    }
 }
