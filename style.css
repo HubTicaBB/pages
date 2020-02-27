@@ -278,10 +278,6 @@ summary {
     font-size: 1.7vh;
 }
 
-#variants .flex-article > * {
-    font-size: 1.4vh;
-}
-
 #variants > .flexbox {
     border-bottom: 1px grey solid;
 }
@@ -296,7 +292,7 @@ summary {
     height: auto;
 }
 
-#variants table {
+#variants > .flexbox > article > table {
     margin: 0;
     width: 100%;
 }
@@ -311,7 +307,7 @@ summary {
     width: 25%;
 }
 
-#variants h3 {
+#variants > .flexbox > article > h3 {
     margin: 10px;
     font-size: 2vh;
 }
