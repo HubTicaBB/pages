@@ -269,7 +269,7 @@ summary {
     color: white;
     font-size: 3vw;
     margin: 0;
-    padding: 20px;
+    padding: 10px 0;
     text-align: center;
     text-transform: uppercase;
 }
@@ -305,11 +305,6 @@ summary {
 
 .value {
     width: 25%;
-}
-
-#variants > .flexbox > article > h3 {
-    margin: 10px 0;
-    font-size: 2vh;
 }
 
 #sustainability > .flexbox {
