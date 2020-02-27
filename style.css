@@ -118,7 +118,7 @@ h1 {
 }
 
 article > * {
-    margin: 10%;
+    margin: 0 10%;
 }
 
 article > *,
@@ -269,7 +269,7 @@ summary {
     color: white;
     font-size: 3vw;
     margin: 0;
-    padding: 10px 0;
+    padding: 20px;
     text-align: center;
     text-transform: uppercase;
 }
