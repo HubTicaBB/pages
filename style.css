@@ -128,21 +128,12 @@ article > *,
     font-size: calc(1.5vh + 0.2vw);
 }
 
-#productinformation figure {
+.half-screen {
     width: 50%;
 }
 
 #productinformation article {
-    width: 50%;
     background-image: url("./img-resources/productinfo-background.png");
-}
-
-#functions > .flexbox > figure {
-    width: 65%;
-}
-
-#functions > .flexbox > article {
-    width: 35%;
 }
 
 figure {
@@ -155,13 +146,13 @@ figure {
     flex: 1 1 auto;
 }
 
-.flexbox > figure > img {
+.flexbox img {
     width: 100%;
     height: 100%;
     display: block; /* remove extra space below image */
 }
 
-#variants > .flexbox > figure > img {
+#variants img {
     width: 30%;
     height: auto;
     margin: 10% auto;
@@ -285,17 +276,24 @@ summary {
     border-bottom: 1px grey solid;
 }
 
-#variants > .flexbox > article {
-    width: 70%;
+.two-thirds-screen {
+    width: 65%;
+}
+
+.one-third-screen {
+    width: 35%;
+}
+
+#variants > .flexbox > article {    
     margin-left: 0;
 }
 
-#variants > .flexbox > figure {
-    width: 30%;
+#variants figure {
+    
     height: auto;
 }
 
-#variants > .flexbox > article > table {
+#variants table {
     margin: 0;
     width: 100%;
 }
@@ -308,10 +306,6 @@ summary {
 
 .value {
     width: 25%;
-}
-
-#sustainability > .flexbox {
-    background-image: none;
 }
 
 .index-box {
@@ -449,26 +443,10 @@ i.fa-linkedin {
         flex-direction: column;
     }
 
-    .flexbox > *,
-    #productinformation > .flexbox > figure,
-    #productinformation > .flexbox > article,
-    #functions > .flexbox > figure,
-    #functions > .flexbox > article,
-    #variants > .flexbox > figure,
-    #variants > .flexbox > article {
+    .half-screen,
+    .one-third-screen,
+    .two-thirds-screen,
+    .index-box {
         width: 100%;
     }
-
-    #variants > .flexbox > figure > img {
-        width: 30%;
-    }
-
-    main p {
-        margin-top: 20px;
-    }
-
-    #variants p {
-        margin-top: 0;
-    }
 }
-
