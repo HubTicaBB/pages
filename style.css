@@ -6,10 +6,6 @@ body {
     padding: 0;
 }
 
-p {
-
-}
-
 header {
     background: linear-gradient(#CED8E1, #A8BBCC);    
     width: 100%;
@@ -32,9 +28,12 @@ nav {
     width: auto;
 }
 
-footer .flexbox,
 .content {
-    margin: auto 10%;
+    margin: auto 10% 5% 10%;
+}
+
+footer .flexbox {
+    auto 10%
 }
 
 .logo > img {
