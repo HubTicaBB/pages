@@ -33,7 +33,7 @@ nav {
 }
 
 footer .flexbox {
-    auto 10%
+    margin: 0 10%
 }
 
 .logo > img {
@@ -120,8 +120,6 @@ h1 {
     background-image: url("./img-resources/productinfo-background.png");
 }
 
-
-
 .half-screen {
     width: 50%;
 }
@@ -177,14 +175,6 @@ article li {
     border: none;
 }
 
-article h2,
-article p,
-article details,
-article ul,
-article table {
-    margin: 3% 10%;
-}
-
 h2 {    
     font-weight: bold;
     text-transform: uppercase;
@@ -197,6 +187,7 @@ table,
 p,
 h2 {
     font-size: 1.25vmax;
+    margin: 3% 10%;
 }
 
 summary {
@@ -396,7 +387,7 @@ i.fa-linkedin {
         font-size: 2.2vmax;
     }
 
-    .contact {
+    #contact {
         margin: auto;
     }
 
@@ -463,7 +454,4 @@ i.fa-linkedin {
     .container {
         margin-bottom: 56px;
     }
-}
-
-@media screen and (max-width: 575px) {
 }
