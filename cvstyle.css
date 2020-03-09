@@ -51,8 +51,22 @@ body {
     height: 20vh;
     width: auto;
     display: block;
-    margin: 20vh auto auto auto;
+    margin: 20vh auto 0 auto;
     box-shadow: 13px 13px 25px 5px rgba(46,36,46,0.7);
+}
+
+.startpage img:hover {
+    position: relative;
+    animation: 3s roling alternate ease-in-out infinite;   
+}
+
+@keyframes roling {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 h2,
@@ -145,12 +159,25 @@ h4 {
     padding: 1vw 2vw;    
 }
 
+.flexbox > div:hover {
+     background: rgba(199,144,42,0.6);     
+}
+
 #skillz > div > div {
     box-shadow: 13px 13px 25px 5px rgba(46,36,46,0.7);
     font-size: calc(1.5vmax - 1vmin);
 }
 
+#skillz > div > div:hover {
+    box-shadow: 13px 13px 25px 5px rgba(46,36,46,0.95);
+}
+
 #contactme > div > div {
     background: none;    
+}
+
+.fa:hover {
+    color: #8c80bd;
+    text-shadow: 4px 3px 7px rgba(46,36,46,0.85);
 }
 
