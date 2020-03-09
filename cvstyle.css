@@ -1,0 +1,151 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to bottom right, transparent, rgba(84,74,125,0.9), rgba(255,212,82,0.6)), url("background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    width: auto;
+    font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+    top: 0;
+    position: absolute;
+}
+
+.container {
+    margin: 0 10% 10% 10%;
+}
+
+.go-to {
+    position: fixed;   
+    right: 10px;    
+}
+
+#top {
+    top: 20px;
+    margin: 0;
+}
+
+#contact {
+    bottom: 20px;
+    margin: 0;
+}
+
+.startpage {
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    color: #220b38;
+    text-shadow: 4px 3px 7px rgba(46,36,46,0.85);
+    letter-spacing: 3px;
+    word-spacing: 3px;
+}
+
+.startpage img {
+    border-radius: 50%;
+    height: 20vh;
+    width: auto;
+    display: block;
+    margin: 20vh auto auto auto;
+    box-shadow: 13px 13px 25px 5px rgba(46,36,46,0.7);
+}
+
+h2,
+h3 {
+    font-variant: small-caps;
+}
+
+.startpage h2 {
+    font-size: 5vmax;      
+    margin-bottom: 0;
+}
+
+.startpage p {
+    font-size: 2vmax; 
+}
+
+.stress {
+    color: #c7902a;
+}
+
+.button {
+    background-color: #c7902a;
+    font-size: 1.5vmax;
+    border-radius: 25px;
+    display: inline-block;
+    text-align: center;
+    padding: 6px 3vw;
+    margin: 20vh auto;
+}
+
+a {
+    text-decoration: none;
+    color: #220b38;
+    text-shadow: none;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+ul {
+    margin-left: 25px;
+    font-size: calc(2.5vmax - 1vmin);
+}
+
+li {
+    margin-top: 7px;
+}
+
+h2 {
+    font-size: calc(4vmax - 1vmin);
+}
+
+h3 {
+    font-size: calc(3vmax - 1vmin);
+    margin: 4vh auto 1vh auto;
+    border-bottom: 1px solid rgba(46,36,46,0.7);
+}
+
+h4 {
+    font-size: calc(2.5vmax - 1vmin);
+    margin-bottom: 2vh;
+}
+
+.section {
+    background: rgba(34,11,56,0.3);
+    padding: 1vh;
+    text-align: center;
+}
+
+#details section {
+    margin-top: 10vh;
+}
+
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.flexbox > div {
+    flex: 1 1 auto;
+    background: rgba(199,144,42,0.3);
+    margin: 0.5vmax;
+    display: inline-block;
+    text-align: center;
+    border-radius: 25px;
+    padding: 1vw 2vw;
+    
+}
+
+#contactme {
+    font-size: calc(2vmax - 1vmin);
+}
+
+#contactme > div > div {
+    background: none;    
+}
+
