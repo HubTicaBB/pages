@@ -12,12 +12,14 @@ body {
     height: 100vh;
     width: auto;
     font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+    font-size: calc(1.5vmax - 1vmin);
+    text-shadow: 4px 3px 7px rgba(46,36,46,0.85);
     top: 0;
     position: absolute;
 }
 
 .container {
-    margin: 0 10% 10% 10%;
+    margin: 0 10% 5% 10%;
 }
 
 .go-to {
@@ -40,7 +42,6 @@ body {
     margin: 0;
     text-align: center;
     color: #220b38;
-    text-shadow: 4px 3px 7px rgba(46,36,46,0.85);
     letter-spacing: 3px;
     word-spacing: 3px;
 }
@@ -74,12 +75,13 @@ h3 {
 
 .button {
     background-color: #c7902a;
-    font-size: 1.5vmax;
+    font-size: 1vmax;
     border-radius: 25px;
     display: inline-block;
     text-align: center;
     padding: 6px 3vw;
     margin: 20vh auto;
+    box-shadow: 13px 13px 25px 5px rgba(46,36,46,0.7);
 }
 
 a {
@@ -92,7 +94,7 @@ a {
 
 ul {
     margin-left: 25px;
-    font-size: calc(2.5vmax - 1vmin);
+    text-shadow: none;
 }
 
 li {
@@ -100,18 +102,21 @@ li {
 }
 
 h2 {
-    font-size: calc(4vmax - 1vmin);
+    font-size: calc(3vmax - 1vmin);
+    color: #c7902a;
 }
 
 h3 {
-    font-size: calc(3vmax - 1vmin);
+    font-size: calc(2.5vmax - 1vmin);
     margin: 4vh auto 1vh auto;
     border-bottom: 1px solid rgba(46,36,46,0.7);
+    text-shadow: none;
 }
 
 h4 {
-    font-size: calc(2.5vmax - 1vmin);
+    font-size: calc(1.7vmax - 1vmin);
     margin-bottom: 2vh;
+    text-shadow: none;
 }
 
 .section {
@@ -137,12 +142,12 @@ h4 {
     display: inline-block;
     text-align: center;
     border-radius: 25px;
-    padding: 1vw 2vw;
-    
+    padding: 1vw 2vw;    
 }
 
-#contactme {
-    font-size: calc(2vmax - 1vmin);
+#skillz > div > div {
+    box-shadow: 13px 13px 25px 5px rgba(46,36,46,0.7);
+    font-size: calc(1.5vmax - 1vmin);
 }
 
 #contactme > div > div {
