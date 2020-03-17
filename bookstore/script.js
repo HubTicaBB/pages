@@ -82,9 +82,30 @@ function updateStatus(data) {
 
 function updateBookView(data) {
     var bookView = document.getElementById('book-list');
-    bookView.innerHTML += '<tr><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td></tr>';
+    bookView.innerHTML += '<tr id="' + data.id + '"><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x" onclick="deleteBook(' + data.id + ')"></i></td></tr>';
 }
 
 function closeForm() {
     document.getElementById('add-form').style.display = 'none';
+}
+
+function deleteBook(id) {
+
+    fetch(APIUrl + '?key=' + APIKey + '&op=delete&id=' + id)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        if (data.status !== 'success' && counter <= 10) {
+            counter++; 
+            deleteBook(id);
+        }
+        else {
+            element = document.getElementById(id);
+            element.parentNode.removeChild(element);
+            counter = 0;
+
+            // TODO: add feedback, statuslabel
+        }
+    })
 }

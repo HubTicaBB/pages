@@ -180,8 +180,16 @@ tr:hover {
     color: rgb(184, 120, 24);
 }
 
+.fa-edit:hover {
+    color: rgb(255, 166, 31);
+}
+
 .fa-trash {
     color: rgb(194, 62, 62);
+}
+
+.fa-trash:hover {
+    color: rgb(255, 30, 0);
 }
 
 #add-form {
