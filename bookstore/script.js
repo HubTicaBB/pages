@@ -1,14 +1,16 @@
 var APIKey, localStorage;
 
 window.onload = initialize();
-document.getElementById('request-api-key-button').addEventListener('click', fetchAPI);
-document.getElementById('add-button').addEventListener('click', addBook);
+
 
 function initialize() {
     fetchAPI();
     localStorage = window.localStorage;
     localStorage.clear();
     document.getElementById('add-form').style.display = 'none';
+    document.getElementById('request-api-key-button').addEventListener('click', fetchAPI);
+    document.getElementById('add-button').addEventListener('click', toggleAddBookForm);
+    document.getElementById('submit-book-button').addEventListener('click', addBook);
 }
 
 function fetchAPI() {
@@ -19,9 +21,7 @@ function fetchAPI() {
             console.log('Fetching failed: status code: ' + response.status);
             return;
         }
-        else {
-            return response.json();
-        }
+        else { return response.json(); }
     })
     .then((data) => {
         APIKey = data.key;    
@@ -30,12 +30,23 @@ function fetchAPI() {
     })
 }
 
-function addBook() {
-    toggleAddBookForm();
-}
-
 function toggleAddBookForm() {
     var addBookForm = document.getElementById('add-form');
     addBookForm.style.display = (addBookForm.style.display === 'none') ? 'block' : 'none';
 }
+
+function validateInput(inputField) {
+    if (inputField.value.length > 0) { // TODO: Lägga till regex validation (alphanummeric)
+        console.log('inputField.textContent.length - ' + inputField.value.length);
+        inputField.style.outlineColor = 'green';
+    }
+    else {
+        console.log('inputField.textContent.length - ' + inputField.value.length);
+        inputField.style.outlineColor = 'red';
+    }
+}
+
+function addBook() {
+}
+
 

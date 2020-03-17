@@ -204,20 +204,23 @@ tr:hover {
     font-size: 18px;
     font-family: 'Lato';
     text-align: center;
-    padding: 5px 10px;    
+    padding: 5px;    
 }
 
-#add-title {
+#input-title,
+#input-author {
+    width: 400px;
+}
+
+#input-title {
     top: 100px;
-    width: 400px;
 }
 
-#add-author {
+#input-author {
     top: 150px;
-    width: 400px;
 }
 
-#submit-book {
+#submit-book-button {
     top: 250px;
     width: 200px;
 }
