@@ -6,6 +6,8 @@ window.onload = fetchAPI();
 
 document.getElementById('request-api-key-button').addEventListener('click', fetchAPI);
 
+document.getElementById('add-button').addEventListener('click', addBook);
+
 function fetchAPI() {
     fetch('https://www.forverkliga.se/JavaScript/api/crud.php?requestKey')
     .then((response) => {
@@ -24,3 +26,8 @@ function fetchAPI() {
         localStorage.setItem('item' + localStorage.length, APIKey);
     })
 }
+
+function addBook() {
+    console.log('adding a new book');
+}
+

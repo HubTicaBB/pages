@@ -6,21 +6,132 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet" type="text/css">
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>My Book Repository</h1>
+        <!-- Request API key -->
+        <div class="api-key-panel">
+            <div>Current API key:<span id="current-api-key"></span></div>
+            <button id="request-api-key-button">Request new</button>
+        </div>
     </header>
 
-    <!-- Request API key -->
-    <div class="api-key-panel">
-        <div>Current API key:<span id="current-api-key"></span></div>
-        <button id="request-api-key-button">Request new</button>
-    </div>
-    
     <div class="wrapper">
         <!-- Insert -->
-        <button id="add-button"></button>
+        <!-- Add data
+
+            Add book information to the database.
+            Querystring parameters:
+
+            op=insert
+            key - an API key that identifies the request
+            title - the book title
+            author - the name of the author -->
+        <button id="add-button"><i class="fa fa-plus-circle fa-lg"></i>Add book</button>
+        
+        <table id="book-table">
+            <thead>
+                <tr>
+                    <th class="author">Author</th>
+                    <th class="title">Title</th>
+                    <th class="actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="author">Random Randomsson</td>
+                    <td class="title">A Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td class="author">Randomir Randomović</td>
+                    <td class="title">The Book</td>
+                    <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     
 

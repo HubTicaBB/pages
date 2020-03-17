@@ -9,6 +9,7 @@ body {
     background-size: cover;
     background-position: top;    
     background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100vh;
     font-family: Lato;
     font-weight: 300;
@@ -17,9 +18,10 @@ body {
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.6);
     text-align: center;
-    padding: 15px;
+    padding: 20px;
+    height: 110px;
 }
 
 h1 {
@@ -31,25 +33,24 @@ h1 {
 }
 
 .api-key-panel {
-    background-color: rgba(255, 255, 255, 0.7);
     color: rgb(65, 62, 62);
     width: 290px;
     height: 110px;
-    top: 20px;
-    left: 20px;
-    position: relative;
+    top: 0;
+    right: 20px;
+    position: absolute;
     font-family: Lato;
     font-size: 20px;
-    padding: 15px;
+    padding: 15px 0;
 }
 
 #current-api-key {
     font-family: 'Source Code Pro', monospace;
-    padding: 5px 20px;
+    padding: 5px 30px;
     margin-left: 15px;
     background-color: white;
     border-radius: 15px;
-    width: 200px;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
 }
 
 #request-api-key-button {
@@ -57,15 +58,24 @@ h1 {
     background-color: rgba(255, 113, 30, 0.6);
     border: none;
     position: absolute;
-    font-family: Lato;
-    font-size: 16px;
     color: rgb(51, 38, 38);
-    left: 155px;
+    left: 163px;
     top: 60px;
+    font-size: 16px;
+}
+
+#request-api-key-button:hover {
+    color: rgb(247, 215, 196);
 }
 
 button {
     cursor: pointer;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-family: Lato;
+    font-size: 20px;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
@@ -74,4 +84,102 @@ button:hover {
 
 button:focus {
     outline: none;
+}
+
+.wrapper {
+    width: 80vw;
+    height: 70%;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    background-attachment: fixed;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.wrapper button {
+    text-transform: uppercase;
+    font-weight: 300;
+    box-shadow: none;
+}
+
+.wrapper button:hover {
+    letter-spacing: 2px;
+}
+
+i {
+    color: rgb(32, 124, 32);
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: text-top;
+    transition: letter-spacing 0.3s;
+}
+
+#add-button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+#book-view {
+    height: 200px;
+    width: 70vw;
+    position: relative;
+    left: 50%;
+    top: 80px;
+    transform: translate(-50%);    
+}
+
+thead {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+tbody {
+    display: block;
+    height: 500px;
+    width: 70vw;
+    overflow: auto;
+}
+
+tr {
+    width: 70vw;
+}
+
+th {
+    text-align: left;
+    text-transform: uppercase;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.author,
+.title {
+    width: 30vw;
+}
+
+.actions {
+    text-align: center;
+    width: 10vw;
+}
+
+td {
+    padding: 10px 15px;
+    border-bottom: 0.8px dotted rgb(65, 62, 62);
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(29, 25, 25);
+}
+    
+.fa-edit {
+    color: rgb(184, 120, 24);
+}
+
+.fa-trash {
+    color: rgb(194, 62, 62);
 }
