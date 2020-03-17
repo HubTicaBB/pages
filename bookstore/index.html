@@ -34,18 +34,21 @@
         <table id="book-view">
             <thead>
                 <tr>
+                    <th class=id>Id</th>
                     <th class="author">Author</th>
                     <th class="title">Title</th>
                     <th class="actions">Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="book-list">
                 <tr>
+                    <td class="id">100000</td>
                     <td class="author">Random Randomsson</td>
                     <td class="title">A Book</td>
                     <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
                 </tr>       
                 <tr>
+                    <td class="id">100008</td>
                     <td class="author">Randomir Randomović</td>
                     <td class="title">The Book</td>
                     <td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td>
@@ -54,12 +57,13 @@
         </table>
     </div>
 
-    <div id="add-form">
+    <div id="add-form" method="POST" onsubmit="return false;">
         <form autocomplete="off">
             <button id="close"><i class="fa fa-window-close"></i></button>
             <input id="input-title" class="input-text" type="text" placeholder="Book Title">
             <input id="input-author" class="input-text" type="text" placeholder="Author's Name">
-            <input id="submit-book-button" type="button" value="Submit">
+            <input id="submit-book-button" type="submit" value="Submit">
+            <label id="add-status">Status:</label>
         </form>
     </div>
     

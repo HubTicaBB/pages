@@ -158,12 +158,12 @@ th {
 
 .author,
 .title {
-    width: 30vw;
+    width: 28vw;
 }
 
-.actions {
-    text-align: center;
-    width: 10vw;
+.id,
+.actions {    
+    width: 7vw;
 }
 
 td {
@@ -197,7 +197,8 @@ tr:hover {
     overflow: hidden;
 }
 
-#add-form input {
+#add-form input,
+#add-form label {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -208,7 +209,8 @@ tr:hover {
 }
 
 #input-title,
-#input-author {
+#input-author,
+#add-status {
     width: 400px;
 }
 
@@ -222,7 +224,11 @@ tr:hover {
 
 #submit-book-button {
     top: 250px;
-    width: 200px;
+    width: 200px;    
+}
+
+#submit-book-button:hover {
+    font-weight: 600;
 }
 
 #close {
@@ -236,4 +242,8 @@ tr:hover {
 #close i {
     color: rgb(87, 82, 82);
     margin: 0;
+}
+
+#add-status {
+    top: 300px;
 }
