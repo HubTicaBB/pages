@@ -198,7 +198,8 @@ tr:hover {
 }
 
 #add-form input,
-#add-form label {
+#add-form label,
+footer {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -246,4 +247,14 @@ tr:hover {
 
 #add-status {
     top: 300px;
+}
+
+footer {
+    bottom: 25px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+footer a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
 }

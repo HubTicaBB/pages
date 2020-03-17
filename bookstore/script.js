@@ -11,7 +11,7 @@ function initialize() {
     document.getElementById('add-form').style.display = 'none';
     document.getElementById('request-api-key-button').addEventListener('click', fetchAPI);
     document.getElementById('add-button').addEventListener('click', toggleAddBookForm);
-    document.getElementById('submit-book-button').addEventListener('click', function(e) {addBook();});    
+    document.getElementById('submit-book-button').addEventListener('click', addBook);    
     document.getElementById('close').addEventListener('click', closeForm);
 }
 
@@ -46,7 +46,7 @@ function validateInput(inputField) {
 }
 
 let counter = 1;
-function addBook(e) {    
+function addBook() {    
     let statusLabel =  document.getElementById('add-status');
     statusLabel.textContent = 'Submitting request...';  
     statusLabel.style.background = 'grey';
@@ -58,21 +58,21 @@ function addBook(e) {
     .then((data) => {
         if (data.status !== 'success' && counter <= 10) {
             counter++; 
-            addBook(e);
+            addBook();
         }
         else {
-            updateStatus(data, e);
+            updateStatus(data);
             counter = 0;
         }
     })
 }
 
-function updateStatus(data, e) {
+function updateStatus(data) {
     let statusLabel = document.getElementById('add-status');
     statusLabel.textContent = 'Status:\t' + data.status;
     if (data.status === 'success') {
         statusLabel.style.background = '#97c98b';
-        updateBookView(data, e);
+        updateBookView(data);
     } 
     else  if (data.status === 'error') {
         statusLabel.textContent += ' - ' + data.message;
@@ -80,7 +80,7 @@ function updateStatus(data, e) {
     } 
 }
 
-function updateBookView(data, e) {
+function updateBookView(data) {
     var bookView = document.getElementById('book-list');
     bookView.innerHTML += '<tr><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i></td></tr>';
 }
