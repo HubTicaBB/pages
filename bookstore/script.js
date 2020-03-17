@@ -2,6 +2,8 @@ var APIKey;
 var localStorage = window.localStorage;
 localStorage.clear();
 
+window.onload = fetchAPI();
+
 document.getElementById('request-api-key-button').addEventListener('click', fetchAPI);
 
 function fetchAPI() {
