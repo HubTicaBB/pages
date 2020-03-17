@@ -183,3 +183,54 @@ tr:hover {
 .fa-trash {
     color: rgb(194, 62, 62);
 }
+
+#add-form {
+    width: 40vw;
+    height: 35%;
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    background-attachment: fixed;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+#add-form input {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 18px;
+    font-family: 'Lato';
+    text-align: center;
+    padding: 5px 10px;    
+}
+
+#add-title {
+    top: 100px;
+    width: 400px;
+}
+
+#add-author {
+    top: 150px;
+    width: 400px;
+}
+
+#submit-book {
+    top: 250px;
+    width: 200px;
+}
+
+#close {
+    position: fixed;
+    top: -1px;
+    right: 0;
+    box-shadow: none;
+    margin: 0;
+}
+
+#close i {
+    color: rgb(87, 82, 82);
+    margin: 0;
+}

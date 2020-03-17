@@ -1,12 +1,15 @@
-var APIKey;
-var localStorage = window.localStorage;
-localStorage.clear();
+var APIKey, localStorage;
 
-window.onload = fetchAPI();
-
+window.onload = initialize();
 document.getElementById('request-api-key-button').addEventListener('click', fetchAPI);
-
 document.getElementById('add-button').addEventListener('click', addBook);
+
+function initialize() {
+    fetchAPI();
+    localStorage = window.localStorage;
+    localStorage.clear();
+    document.getElementById('add-form').style.display = 'none';
+}
 
 function fetchAPI() {
     fetch('https://www.forverkliga.se/JavaScript/api/crud.php?requestKey')
@@ -28,6 +31,11 @@ function fetchAPI() {
 }
 
 function addBook() {
-    console.log('adding a new book');
+    toggleAddBookForm();
+}
+
+function toggleAddBookForm() {
+    var addBookForm = document.getElementById('add-form');
+    addBookForm.style.display = (addBookForm.style.display === 'none') ? 'block' : 'none';
 }
 
