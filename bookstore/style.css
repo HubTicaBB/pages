@@ -1,1 +1,77 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    background-image: linear-gradient(rgba(167, 167, 167, 0.568), rgba(20, 20, 20, 0.8)), url(background.jpg);
+    background-size: cover;
+    background-position: top;    
+    background-repeat: no-repeat;
+    height: 100vh;
+    font-family: Lato;
+    font-weight: 300;
+    position: relative;
+    color: rgb(65, 62, 62);
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 15px;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    font-size: 3em;
+    font-weight: 300;
+}
+
+.api-key-panel {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: rgb(65, 62, 62);
+    width: 290px;
+    height: 110px;
+    top: 20px;
+    left: 20px;
+    position: relative;
+    font-family: Lato;
+    font-size: 20px;
+    padding: 15px;
+}
+
+#current-api-key {
+    font-family: 'Source Code Pro', monospace;
+    padding: 5px 20px;
+    margin-left: 15px;
+    background-color: white;
+    border-radius: 15px;
+    width: 200px;
+}
+
+#request-api-key-button {
+    padding: 10px 15px;
+    background-color: rgba(255, 113, 30, 0.6);
+    border: none;
+    position: absolute;
+    font-family: Lato;
+    font-size: 16px;
+    color: rgb(51, 38, 38);
+    left: 155px;
+    top: 60px;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    font-weight: 600;
+}
+
+button:focus {
+    outline: none;
+}

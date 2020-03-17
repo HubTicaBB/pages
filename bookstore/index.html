@@ -3,19 +3,24 @@
     <title>The Bookstore</title>
     <meta charset="UTF-8">
     <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet" type="text/css">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <!-- Insert -->
-
-    <!-- Select -->
-
-    <!-- Update -->
-
-    <!-- Delete -->
+    <header>
+        <h1>My Book Repository</h1>
+    </header>
 
     <!-- Request API key -->
-    <button id="request-api-key-button">Request API key</button>
-    <div id="api-key"></div>
+    <div class="api-key-panel">
+        <div>Current API key:<span id="current-api-key"></span></div>
+        <button id="request-api-key-button">Request new</button>
+    </div>
+    
+
+    <!-- Insert -->
+    <button id="add-button"></button>
 
     <script src="script.js"></script>
 </body> 

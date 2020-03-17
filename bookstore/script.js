@@ -18,7 +18,7 @@ function fetchAPI() {
     })
     .then((data) => {
         APIKey = data.key;    
-        document.getElementById('api-key').textContent = APIKey;     
+        document.getElementById('current-api-key').textContent = APIKey;     
         localStorage.setItem('item' + localStorage.length, APIKey);
     })
 }
