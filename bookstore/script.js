@@ -8,8 +8,9 @@ function initialize() {
     localStorage = window.localStorage;
     localStorage.clear();
     fetchAPI('requestKey');
+    
 
-    document.getElementById('request-api-key-button').addEventListener('click', fetchAPI);
+    document.getElementById('request-api-key-button').addEventListener('click', function() { fetchAPI('requestKey') });
     document.getElementById('add-button').addEventListener('click', function() { setupForm('input-form'); });
     document.getElementById('submit-book-button').addEventListener('click', addBook);    
     document.getElementById('close').addEventListener('click', function() {closeForm(this.parentNode.parentNode)});
@@ -26,40 +27,14 @@ function fetchAPI(op, key, title, author, id) {
             counter++;
             fetchAPI(op, key, title, author, id);
         }
-        else {
-            counter = 0;
-            updateStatus(op, data);
+        else if (data.status === 'success') {
+            counter = 0;            
         }
-    })
-}
-
-function updateStatus(op, data) {
-    let statusLabel = document.getElementById('status');
-    statusLabel.textContent = 'Operation ' + op + ': ' + data.status;
-    if (data.status === 'success') {
-        statusLabel.style.background = '#97c98b';
-    } 
-    else if (data.status === 'error') {
-        statusLabel.textContent += ' - ' + data.message;
-        statusLabel.style.background = 'pink';
-    } 
-}
-
-
-function fetchAPI2() {
-    fetch(APIUrl + 'requestKey')
-    .then((response) => {
-        if (response.status !== 200) {
-            // TODO: alla AJAX-anrop som misslyckas upprepas tills de går igenom (men maximalt 10 gånger)
-            return;
+        updateStatus(op, data);  
+        if (op = 'requestKey') {
+            updateAPIKey(data);
         }
-        else { return response.json(); }
-    })
-    .then((data) => {
-        APIKey = data.key;    
-        document.getElementById('current-api-key').textContent = APIKey;     
-        localStorage.setItem('item' + localStorage.length, APIKey);
-    })
+    });  
 }
 
 function getQuerystring(op, key, title, author, id) {
@@ -78,6 +53,41 @@ function getQuerystring(op, key, title, author, id) {
         default:
             return;
     }
+}
+
+function updateStatus(op, data) {
+    let statusLabel = document.getElementById('status');
+    statusLabel.textContent = 'Operation ' + op + ': ' + data.status;
+    if (data.status === 'success') {
+        statusLabel.style.background = '#97c98b';
+    } 
+    else {
+        statusLabel.textContent += ' - ' + data.message;
+        statusLabel.style.background = 'pink';
+    } 
+}
+
+function updateAPIKey(data) {
+    APIKey = data.key;    
+    document.getElementById('current-api-key').textContent = APIKey;     
+    localStorage.setItem('item' + localStorage.length, APIKey);
+}
+
+
+function fetchAPI2() {
+    fetch(APIUrl + 'requestKey')
+    .then((response) => {
+        if (response.status !== 200) {
+            // TODO: alla AJAX-anrop som misslyckas upprepas tills de går igenom (men maximalt 10 gånger)
+            return;
+        }
+        else { return response.json(); }
+    })
+    .then((data) => {
+        APIKey = data.key;    
+        document.getElementById('current-api-key').textContent = APIKey;     
+        localStorage.setItem('item' + localStorage.length, APIKey);
+    })
 }
 
 function setupForm(formId) {
