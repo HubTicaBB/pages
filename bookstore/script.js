@@ -7,7 +7,9 @@ function initialize() {
     APIUrl = 'https://www.forverkliga.se/JavaScript/api/crud.php?';
     localStorage = window.localStorage;
     localStorage.clear();
-    fetchAPI('requestKey');
+    requestAPIKey();
+
+    
     
 
     document.getElementById('request-api-key-button').addEventListener('click', function() { fetchAPI('requestKey') });
@@ -16,11 +18,20 @@ function initialize() {
     document.getElementById('close').addEventListener('click', function() {closeForm(this.parentNode.parentNode)});
 }
 
+function requestAPIKey() {
+    fetchAPI('requestKey');
+}
+
 let counter = 1;
 function fetchAPI(op, key, title, author, id) {    
     fetch(APIUrl + getQuerystring(op, key, title, author, id))
     .then((response) => {  
-        return response.json();
+        if (response.status === 200) {
+            return response.json();
+        }
+        else {
+            throw new Error('Bad response');
+        }
     })
     .then((data) => {
         if (data.status !== 'success' && counter <= 10) {
