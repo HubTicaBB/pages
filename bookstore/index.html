@@ -11,24 +11,16 @@
 <body>
     <header>
         <h1>My Book Repository</h1>
-        <!-- Request API key -->
+
         <div class="api-key-panel">
             <div>Current API key:<span id="current-api-key"></span></div>
             <button id="request-api-key-button">Request new</button>
         </div>
+
     </header>
 
     <div class="wrapper">
-        <!-- Insert -->
-        <!-- Add data
-
-            Add book information to the database.
-            Querystring parameters:
-
-            op=insert
-            key - an API key that identifies the request
-            title - the book title
-            author - the name of the author -->
+        <label id="status"></label>
         <button id="add-button"><i class="fa fa-plus-circle fa-lg"></i>Add book</button>
 
         <table id="book-view">
@@ -42,16 +34,27 @@
             </thead>
             <tbody id="book-list"></tbody>
         </table>
+
     </div>
 
-    <div id="form" method="POST" onsubmit="return false;">
+    <div id="input-form" class="form" method="POST" onsubmit="return false;">
+        <form autocomplete="off">
+            <h2 id="heading"></h2>
+            <button id="close"><i class="fa fa-window-close"></i></button>
+            <input id="input-title" class="input-text" type="text" placeholder="Book Title">
+            <input id="input-author" class="input-text" type="text" placeholder="Author's Name">
+            <input id="submit-book-button" type="submit" value="Submit">            
+        </form>
+    </div>
+
+    <div id="test-confirm-form" class="form" method="POST" onsubmit="return false;">
         <form autocomplete="off">
             <h2 id="heading"></h2>
             <button id="close"><i class="fa fa-window-close"></i></button>
             <input id="input-title" class="input-text" type="text" placeholder="Book Title">
             <input id="input-author" class="input-text" type="text" placeholder="Author's Name">
             <input id="submit-book-button" type="submit" value="Submit">
-            <label id="add-status"></label>
+            <label id="status"></label>
         </form>
     </div>
     

@@ -109,6 +109,11 @@ button:focus {
     letter-spacing: 2px;
 }
 
+#status {
+    top: 20px;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+}
+
 i {
     color: rgb(32, 124, 32);
     display: inline-block;
@@ -192,7 +197,8 @@ tr:hover {
     color: rgb(255, 30, 0);
 }
 
-#form {
+.form {
+    display: none;
     width: 40vw;
     height: 35%;
     position: absolute;
@@ -205,8 +211,8 @@ tr:hover {
     overflow: hidden;
 }
 
-#form input,
-#form label,
+.form input,
+#status,
 footer {
     position: absolute;
     left: 50%;
@@ -229,7 +235,7 @@ h2 {
 
 #input-title,
 #input-author,
-#add-status {
+#status {
     width: 400px;
 }
 
@@ -261,10 +267,6 @@ h2 {
 #close i {
     color: rgb(87, 82, 82);
     margin: 0;
-}
-
-#add-status {
-    top: 300px;
 }
 
 footer {
