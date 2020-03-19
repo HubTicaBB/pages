@@ -8,9 +8,9 @@ function initialize() {
     localStorage = window.localStorage;
     localStorage.clear();
 
-    fetchAPI('requestKey');
+    fetchAPI('requestKey', updateAPIKey);
     document.getElementById('request-api-key-button').addEventListener('click', function() {
-        fetchAPI('requestKey'); 
+        fetchAPI('requestKey', updateAPIKey); 
     });
     document.getElementById('add-button').addEventListener('click', function() {
         setupForm('input-form', 'add');
@@ -25,8 +25,7 @@ function initialize() {
 }
 
 let counter = 1;
-function fetchAPI(op, key, title, author, id) { 
-    console.log(`op: ${op} | key: ${key} | title: ${title} | author: ${author} | ${id}`);
+function fetchAPI(op, callback, key, title, author, id) { 
     fetch(APIUrl + getQuerystring(op, key, title, author, id))
     .then((response) => {  
         if (response.status === 200) {
@@ -39,14 +38,13 @@ function fetchAPI(op, key, title, author, id) {
     .then((data) => {
         if (data.status !== 'success' && counter <= 10) {
             counter++;
-            fetchAPI(op, key, title, author, id);
+            fetchAPI(op, callback, key, title, author, id);
         }
         else if (data.status === 'success') {
             counter = 0;            
         }
-        updateStatus(op, data);   
-        updateAPIKey(op, data);
-        updateBookView(op, data);
+        updateStatus(op, data);
+        callback(data);
     });  
 }
 
@@ -80,10 +78,8 @@ function updateStatus(op, data) {
     } 
 }
 
-function updateAPIKey(op, data) {
-    if (op === 'requestKey') {
-        APIKey = data.key;
-    }
+function updateAPIKey(data) {
+    APIKey = data.key;
     localStorage.setItem('item' + localStorage.length, APIKey);  
     document.getElementById('current-api-key').textContent = APIKey;  
 }
@@ -118,22 +114,30 @@ function toggleForm(form) {
 }
 
 function addBook() {  
-    let title = document.getElementById('input-title');
-    let author = document.getElementById('input-author');
-    if (title.value.length > 0 && author.value.length > 0) {
-        fetchAPI('insert', APIKey, title, author);
+    let title = document.getElementById('input-title').value;
+    let author = document.getElementById('input-author').value;
+    if (title.length > 0 && author.length > 0) {
+        fetchAPI('insert', addToBookView, APIKey, title, author);
     }
 }
 
-function updateBookView(op, data) {
-    if (op === 'insert' && data.status === 'success') {
+function addToBookView(data) {
+    if (data.status === 'success') {
         var bookView = document.getElementById('book-list');
-        bookView.innerHTML += '<tr id="' + data.id + '"><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="editBook(' + data.id + ')"></i><i class="fa fa-trash fa-2x" onclick="deleteBook(' + data.id + ')"></i></td></tr>';
+        bookView.innerHTML += '<tr id="' + data.id + '"><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="editBook(' + data.id + ')"></i><i class="fa fa-trash fa-2x" onclick="toBeDeleted(' + data.id + ')"></i></td></tr>';
     }
-    else if (op === 'delete' && data.status === 'success') {
-        console.log('current request - ' + op);
-        var element = document.getElementById(id);
-        element.parentNode.removeChild(element);
+}
+
+function toBeDeleted(bookId) {
+    var bookToDelete = document.getElementById(bookId);
+    bookToDelete.classList.add('toBeDeleted');
+    fetchAPI('delete', removeFromBookView, APIKey, undefined, undefined, bookId);
+}
+
+function removeFromBookView(data) {
+    if (data.status === 'success') {
+        var bookToDelete = document.getElementsByClassName('toBeDeleted')[0];
+        bookToDelete.parentNode.removeChild(bookToDelete);
     }
 }
 
@@ -141,9 +145,7 @@ function closeForm(form) {
     document.getElementById(form.id).style.display = 'none';
 }
 
-function deleteBook(id) {    
-    fetchAPI('delete', APIKey, id);
-}
+
 
 function editBook(id) {
     toggleForm('input-form');
