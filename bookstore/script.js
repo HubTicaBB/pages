@@ -2,8 +2,8 @@ var APIKey, localStorage, APIUrl;
 
 window.onload = initialize();
 
+function initialize() {    
 
-function initialize() {
     APIUrl = 'https://www.forverkliga.se/JavaScript/api/crud.php?';
     localStorage = window.localStorage;
     localStorage.clear();
@@ -22,6 +22,8 @@ function initialize() {
     });
     document.getElementById('submit-button').addEventListener('click', addBook);    
     document.getElementById('close').addEventListener('click', function() {closeForm(this.parentNode.parentNode)});
+
+    window.addEventListener('resize', adjustContent);
 }
 
 let counter = 1;
@@ -128,7 +130,6 @@ function addToBookView(data) {
     if (data.status === 'success') {
         var bookView = document.getElementById('book-list');
         bookView.innerHTML += '<tr id="' + data.id + '"><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="editBook(' + data.id + ')"></i><i class="fa fa-trash fa-2x" onclick="toBeDeleted(' + data.id + ')"></i></td></tr>';
-        console.log(bookView.innerHTML);
         document.getElementById('input-title').value = '';
         document.getElementById('input-author').value = '';
     }
@@ -152,9 +153,15 @@ function closeForm(form) {
     document.getElementById(form.id).style.display = 'none';
 }
 
+window.addEventListener('resize', adjustContent);
 
-
-function editBook(id) {
-    toggleForm('input-form');
-    document.getElementById('heading').innerHTML = "Modify Book Details";
+var standardBody = document.body.innerHTML;
+function adjustContent() {
+    if (window.innerWidth < 1000) {
+        document.body.innerHTML = '<p style="color:white; font-size: 10vmin; margin: 10%">In order to be able to use such a great tool, you will need to buy a proper device with a decent screen size.</p><script src="script.js"></script>'
+    }
+    else {
+        document.body.innerHTML = standardBody;
+        initialize();
+    }
 }

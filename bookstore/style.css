@@ -20,6 +20,7 @@ body {
 header {
     background-color: rgba(255, 255, 255, 0.6);
     text-align: center;
+    vertical-align: center;
     padding: 20px;
     height: 110px;
 }
@@ -28,8 +29,10 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
     word-spacing: 3px;
-    font-size: 3em;
+    font-size: 2.8vmax;
     font-weight: 300;
+    height: 100%;
+    padding: 10px 0;
 }
 
 .api-key-panel {
@@ -42,6 +45,11 @@ h1 {
     font-family: Lato;
     font-size: 20px;
     padding: 15px 0;
+    text-align: right;
+}
+
+.current-div {
+    width: 100%;   
 }
 
 #current-api-key {
@@ -57,10 +65,9 @@ h1 {
     padding: 10px 15px;
     background-color: rgba(255, 113, 30, 0.6);
     border: none;
-    position: absolute;
     color: rgb(51, 38, 38);
-    left: 163px;
-    top: 60px;
+    position: relative;
+    top: 15px;
     font-size: 16px;
 }
 
@@ -78,20 +85,17 @@ button {
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
 }
 
-button:hover {
-    font-weight: 600;
-}
-
 button:focus {
     outline: none;
 }
 
 .wrapper {
     width: 80vw;
-    height: 70%;
+    height: auto;
     position: absolute;
     top: 200px;
     left: 50%;
+    bottom: 70px;
     transform: translate(-50%);
     background-color: rgba(255, 255, 255, 0.3);
     background-attachment: fixed;
@@ -113,7 +117,7 @@ button:focus {
     background-color: lightslategrey;
     top: 20px;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
-    width: 600px;
+    width: 55%;
 }
 
 i {
@@ -211,6 +215,7 @@ tr:hover {
     background-attachment: fixed;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
     overflow: hidden;
+    text-align: center;
 }
 
 .form input,
@@ -231,30 +236,31 @@ footer {
 
 h2 {
     position: absolute;
-    top: 50px;
+    top: 5vh;
     left: 50%;
     transform: translate(-50%);
     font-size: 22px;
     text-transform: uppercase;
     font-weight: 300;
+    width: 90%;
 }
 
 #input-title,
 #input-author {
-    width: 400px;
+    width: 75%;
 }
 
 #input-title {
-    top: 100px;
+    top: 10vh;
 }
 
 #input-author {
-    top: 150px;
+    top: 16vh;
 }
 
 #submit-button {
     background-color: rgba(255, 255, 255, 0.6);
-    top: 250px;
+    bottom: 5vh;
     width: 200px;        
 }
 
@@ -276,7 +282,8 @@ h2 {
 }
 
 footer {
-    bottom: 25px;
+    height: 60px;
+    bottom: 0px;
     color: rgba(255, 255, 255, 0.6);
 }
 

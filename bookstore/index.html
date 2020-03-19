@@ -2,6 +2,7 @@
 <head>
     <title>The Bookstore</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="style.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet" type="text/css">
@@ -10,14 +11,13 @@
 </head>
 <body>
     <header>
-        <h1>My Book Repository</h1>
-
-        <div class="api-key-panel">
-            <div>Current API key:<span id="current-api-key"></span></div>
-            <button id="request-api-key-button">Request new</button>
-        </div>
-
+        <h1>My Book Depository</h1>
     </header>
+
+    <div class="api-key-panel">
+        <div class="current-div">Current API key:<span id="current-api-key"></span></div>
+        <button id="request-api-key-button">Request new</button>
+    </div>
 
     <div class="wrapper">
         <label id="status"></label>
