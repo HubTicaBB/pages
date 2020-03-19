@@ -9,30 +9,24 @@ function initialize() {
     localStorage.clear();
 
     fetchAPI('requestKey');
-
     document.getElementById('request-api-key-button').addEventListener('click', function() {
         fetchAPI('requestKey'); 
     });
-
     document.getElementById('add-button').addEventListener('click', function() {
         setupForm('input-form', 'add');
     });
-
     document.querySelectorAll('.input-text').forEach(element => {
         element.addEventListener('input', function() {
             validateInput(element);
         })
     });
-
     document.getElementById('submit-button').addEventListener('click', addBook);    
-
     document.getElementById('close').addEventListener('click', function() {closeForm(this.parentNode.parentNode)});
-
-
 }
 
 let counter = 1;
 function fetchAPI(op, key, title, author, id) { 
+    console.log(`op: ${op} | key: ${key} | title: ${title} | author: ${author} | ${id}`);
     fetch(APIUrl + getQuerystring(op, key, title, author, id))
     .then((response) => {  
         if (response.status === 200) {
@@ -132,9 +126,14 @@ function addBook() {
 }
 
 function updateBookView(op, data) {
-    if (op === 'insert' && data.status == 'success') {
+    if (op === 'insert' && data.status === 'success') {
         var bookView = document.getElementById('book-list');
         bookView.innerHTML += '<tr id="' + data.id + '"><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="editBook(' + data.id + ')"></i><i class="fa fa-trash fa-2x" onclick="deleteBook(' + data.id + ')"></i></td></tr>';
+    }
+    else if (op === 'delete' && data.status === 'success') {
+        console.log('current request - ' + op);
+        var element = document.getElementById(id);
+        element.parentNode.removeChild(element);
     }
 }
 
@@ -142,24 +141,8 @@ function closeForm(form) {
     document.getElementById(form.id).style.display = 'none';
 }
 
-function deleteBook(id) {
-    (APIUrl + 'key=' + APIKey + '&op=delete&id=' + id)
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        if (data.status !== 'success' && counter <= 10) {
-            counter++; 
-            deleteBook(id);
-        }
-        else {
-            element = document.getElementById(id);
-            element.parentNode.removeChild(element);
-            counter = 0;
-
-            // TODO: add feedback, statuslabel
-        }
-    })
+function deleteBook(id) {    
+    fetchAPI('delete', APIKey, id);
 }
 
 function editBook(id) {
