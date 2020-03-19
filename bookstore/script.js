@@ -153,8 +153,6 @@ function closeForm(form) {
     document.getElementById(form.id).style.display = 'none';
 }
 
-window.addEventListener('resize', adjustContent);
-
 var standardBody = document.body.innerHTML;
 function adjustContent() {
     if (window.innerWidth < 1000) {
