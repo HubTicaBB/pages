@@ -7,23 +7,32 @@ function initialize() {
     APIUrl = 'https://www.forverkliga.se/JavaScript/api/crud.php?';
     localStorage = window.localStorage;
     localStorage.clear();
-    requestAPIKey();
 
-    
-    
-
-    document.getElementById('request-api-key-button').addEventListener('click', function() { fetchAPI('requestKey') });
-    document.getElementById('add-button').addEventListener('click', function() { setupForm('input-form'); });
-    document.getElementById('submit-book-button').addEventListener('click', addBook);    
-    document.getElementById('close').addEventListener('click', function() {closeForm(this.parentNode.parentNode)});
-}
-
-function requestAPIKey() {
     fetchAPI('requestKey');
+
+    document.getElementById('request-api-key-button').addEventListener('click', function() {
+        fetchAPI('requestKey'); 
+    });
+
+    document.getElementById('add-button').addEventListener('click', function() {
+        setupForm('input-form', 'add');
+    });
+
+    document.querySelectorAll('.input-text').forEach(element => {
+        element.addEventListener('input', function() {
+            validateInput(element);
+        })
+    });
+
+    document.getElementById('submit-button').addEventListener('click', addBook);    
+
+    document.getElementById('close').addEventListener('click', function() {closeForm(this.parentNode.parentNode)});
+
+
 }
 
 let counter = 1;
-function fetchAPI(op, key, title, author, id) {    
+function fetchAPI(op, key, title, author, id) { 
     fetch(APIUrl + getQuerystring(op, key, title, author, id))
     .then((response) => {  
         if (response.status === 200) {
@@ -41,10 +50,8 @@ function fetchAPI(op, key, title, author, id) {
         else if (data.status === 'success') {
             counter = 0;            
         }
-        updateStatus(op, data);  
-        if (op = 'requestKey') {
-            updateAPIKey(data);
-        }
+        updateStatus(op, data);   
+        updateAPIKey(op, data);
     });  
 }
 
@@ -78,56 +85,51 @@ function updateStatus(op, data) {
     } 
 }
 
-function updateAPIKey(data) {
-    APIKey = data.key;    
-    document.getElementById('current-api-key').textContent = APIKey;     
-    localStorage.setItem('item' + localStorage.length, APIKey);
-}
-
-
-function fetchAPI2() {
-    fetch(APIUrl + 'requestKey')
-    .then((response) => {
-        if (response.status !== 200) {
-            // TODO: alla AJAX-anrop som misslyckas upprepas tills de går igenom (men maximalt 10 gånger)
-            return;
-        }
-        else { return response.json(); }
-    })
-    .then((data) => {
-        APIKey = data.key;    
-        document.getElementById('current-api-key').textContent = APIKey;     
-        localStorage.setItem('item' + localStorage.length, APIKey);
-    })
-}
-
-function setupForm(formId) {
-    toggleForm(formId);
-}
-
-function toggleForm(formId) {
-    var form = document.getElementById(formId);
-    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
-    return form.style.display = (form.style.display === 'none') ? 'block' : 'none';
-}
-
-function setupInputForm(form) {
-    if (form.style.display === 'block') {
-        document.getElementById('heading').innerHTML = "Add Book Details";
-        document.getElementById('input-title').addEventListener('input', function() {validateInput(this)});
-        document.getElementById('input-author').addEventListener('input', function() {validateInput(this)}); 
+function updateAPIKey(op, data) {
+    if (op === 'requestKey') {
+        APIKey = data.key;
     }
+    localStorage.setItem('item' + localStorage.length, APIKey);  
+    document.getElementById('current-api-key').textContent = APIKey;  
 }
 
 function validateInput(inputField) {
     inputField.style.outlineColor = (inputField.value.length > 0) ? 'green' : 'red';
 }
 
-function addBook() {    
-    let statusLabel =  document.getElementById('status');
-    statusLabel.textContent = 'Submitting request...';  
-    statusLabel.style.background = 'grey';
+function setupForm(formId, action) {
+    var form = document.getElementById(formId);
+    if (!form.classList.contains(action)) {
+        form.classList.add(action);
+    }
+    toggleForm(form);
+    addHeading(form);
+}
 
+function addHeading(form) {
+    var heading = document.getElementById('heading');
+    if (form.style.display === 'block') {
+        if (form.classList.contains('add')) {
+            heading.innerHTML = 'Add Book Details';
+        }
+        else if (form.classList.contains('modify')) {
+            heading.innerHTML = 'Modify Book Details';
+        }
+    }
+}
+
+function toggleForm(form) {
+    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+}
+
+function addBook() {  
+    let title = document.getElementById('input-title');
+    let author = document.getElementById('input-author');
+    if (title.value.length > 0 && author.value.length > 0) {
+        fetchAPI('insert', APIKey, title, author);
+    }
+    
+    /*
     fetch(APIUrl + 'key=' + APIKey + '&op=insert&title=' + document.getElementById('input-title').value + '&author=' + document.getElementById('input-author').value)
     .then((response) => {
         return response.json();
@@ -142,6 +144,7 @@ function addBook() {
             counter = 0;
         }
     })
+    */
 }
 
 function updateBookView(data) {

@@ -110,8 +110,10 @@ button:focus {
 }
 
 #status {
+    background-color: lightslategrey;
     top: 20px;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+    width: 600px;
 }
 
 i {
@@ -234,8 +236,7 @@ h2 {
 }
 
 #input-title,
-#input-author,
-#status {
+#input-author {
     width: 400px;
 }
 
@@ -247,13 +248,14 @@ h2 {
     top: 150px;
 }
 
-#submit-book-button {
+#submit-button {
+    background-color: rgba(255, 255, 255, 0.6);
     top: 250px;
-    width: 200px;    
+    width: 200px;        
 }
 
-#submit-book-button:hover {
-    background-color: lightcyan;
+#submit-button:hover {
+    background-color: aliceblue;
 }
 
 #close {
