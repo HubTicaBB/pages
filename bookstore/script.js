@@ -52,6 +52,7 @@ function fetchAPI(op, key, title, author, id) {
         }
         updateStatus(op, data);   
         updateAPIKey(op, data);
+        updateBookView(op, data);
     });  
 }
 
@@ -128,28 +129,13 @@ function addBook() {
     if (title.value.length > 0 && author.value.length > 0) {
         fetchAPI('insert', APIKey, title, author);
     }
-    
-    /*
-    fetch(APIUrl + 'key=' + APIKey + '&op=insert&title=' + document.getElementById('input-title').value + '&author=' + document.getElementById('input-author').value)
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        if (data.status !== 'success' && counter <= 10) {
-            counter++; 
-            addBook();
-        }
-        else {
-            updateStatus(data);
-            counter = 0;
-        }
-    })
-    */
 }
 
-function updateBookView(data) {
-    var bookView = document.getElementById('book-list');
-    bookView.innerHTML += '<tr id="' + data.id + '"><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="editBook(' + data.id + ')"></i><i class="fa fa-trash fa-2x" onclick="deleteBook(' + data.id + ')"></i></td></tr>';
+function updateBookView(op, data) {
+    if (op === 'insert' && data.status == 'success') {
+        var bookView = document.getElementById('book-list');
+        bookView.innerHTML += '<tr id="' + data.id + '"><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="editBook(' + data.id + ')"></i><i class="fa fa-trash fa-2x" onclick="deleteBook(' + data.id + ')"></i></td></tr>';
+    }
 }
 
 function closeForm(form) {
@@ -157,7 +143,7 @@ function closeForm(form) {
 }
 
 function deleteBook(id) {
-    s(APIUrl + 'key=' + APIKey + '&op=delete&id=' + id)
+    (APIUrl + 'key=' + APIKey + '&op=delete&id=' + id)
     .then((response) => {
         return response.json();
     })
