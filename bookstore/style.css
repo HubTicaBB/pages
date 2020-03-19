@@ -225,6 +225,10 @@ footer {
     padding: 5px;    
 }
 
+.form input::placeholder {
+    font-style: italic;
+}
+
 h2 {
     position: absolute;
     top: 50px;

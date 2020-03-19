@@ -119,23 +119,30 @@ function addBook() {
     if (title.length > 0 && author.length > 0) {
         fetchAPI('insert', addToBookView, APIKey, title, author);
     }
+    else {
+        alert('Both "Book Title" and "Author\'s name" are mandatory fields!');
+    }
 }
 
 function addToBookView(data) {
     if (data.status === 'success') {
         var bookView = document.getElementById('book-list');
         bookView.innerHTML += '<tr id="' + data.id + '"><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="editBook(' + data.id + ')"></i><i class="fa fa-trash fa-2x" onclick="toBeDeleted(' + data.id + ')"></i></td></tr>';
+        console.log(bookView.innerHTML);
+        document.getElementById('input-title').value = '';
+        document.getElementById('input-author').value = '';
     }
 }
 
 function toBeDeleted(bookId) {
     var bookToDelete = document.getElementById(bookId);
     bookToDelete.classList.add('toBeDeleted');
+    alert('The book (id: ' + bookToDelete.id + ') is going to be permanently deleted.');
     fetchAPI('delete', removeFromBookView, APIKey, undefined, undefined, bookId);
 }
 
 function removeFromBookView(data) {
-    if (data.status === 'success') {
+    if (data.status === 'success') {        
         var bookToDelete = document.getElementsByClassName('toBeDeleted')[0];
         bookToDelete.parentNode.removeChild(bookToDelete);
     }
