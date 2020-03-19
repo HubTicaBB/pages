@@ -1,13 +1,14 @@
-var APIKey, localStorage, APIUrl;
+var APIKey, localStorage, APIUrl, standardBody;
 
 window.onload = initialize();
 
 function initialize() {    
-
+    standardBody = document.body.innerHTML;
     APIUrl = 'https://www.forverkliga.se/JavaScript/api/crud.php?';
     localStorage = window.localStorage;
     localStorage.clear();
 
+    window.addEventListener('resize', adjustContent);
     fetchAPI('requestKey', updateAPIKey);
     document.getElementById('request-api-key-button').addEventListener('click', function() {
         fetchAPI('requestKey', updateAPIKey); 
@@ -19,11 +20,11 @@ function initialize() {
         element.addEventListener('input', function() {
             validateInput(element);
         })
-    });
-    document.getElementById('submit-button').addEventListener('click', addBook);    
-    document.getElementById('close').addEventListener('click', function() {closeForm(this.parentNode.parentNode)});
-
-    window.addEventListener('resize', adjustContent);
+    });    
+    document.getElementById('submit-button').addEventListener('click', function() {
+        submitBookData(this.classList);
+    });    
+    document.getElementById('close').addEventListener('click', closeForm);  
 }
 
 let counter = 1;
@@ -69,15 +70,17 @@ function getQuerystring(op, key, title, author, id) {
 }
 
 function updateStatus(op, data) {
-    let statusLabel = document.getElementById('status');
-    statusLabel.textContent = 'Operation ' + op + ': ' + data.status;
-    if (data.status === 'success') {
-        statusLabel.style.background = '#97c98b';
-    } 
-    else {
-        statusLabel.textContent += ' - ' + data.message;
-        statusLabel.style.background = 'pink';
-    } 
+    if (op !== 'select') {
+        let statusLabel = document.getElementById('status');
+        statusLabel.textContent = 'Operation ' + op + ': ' + data.status;
+        if (data.status === 'success') {
+            statusLabel.style.background = '#97c98b';
+        } 
+        else {
+            statusLabel.textContent += ' - ' + data.message;
+            statusLabel.style.background = 'pink';
+        } 
+    }
 }
 
 function updateAPIKey(data) {
@@ -90,49 +93,89 @@ function validateInput(inputField) {
     inputField.style.outlineColor = (inputField.value.length > 0) ? 'green' : 'red';
 }
 
-function setupForm(formId, action) {
+function setupForm(formId, action, bookId) {
     var form = document.getElementById(formId);
     if (!form.classList.contains(action)) {
         form.classList.add(action);
     }
     toggleForm(form);
-    addHeading(form);
+    updateInstructions(form, bookId);
 }
 
-function addHeading(form) {
+function updateInstructions(form, bookId) {
     var heading = document.getElementById('heading');
+    var titleField = document.getElementById('input-title');
+    var authorField = document.getElementById('input-author');
+    var submitButton = document.getElementById('submit-button');
     if (form.style.display === 'block') {
         if (form.classList.contains('add')) {
             heading.innerHTML = 'Add Book Details';
+            titleField.placeholder = 'Book Title';
+            authorField.placeholder = 'Author\'s Name';
+            submitButton.classList.add('add');
         }
         else if (form.classList.contains('modify')) {
             heading.innerHTML = 'Modify Book Details';
+            titleField.placeholder = 'New Book Title';
+            authorField.placeholder = 'New Author\'s Name';
+            submitButton.classList.add('modify');
+            submitButton.classList.add(bookId);
         }
     }
+    form.classList.remove('add');
+    form.classList.remove('modify');
 }
 
 function toggleForm(form) {
     form.style.display = (form.style.display === 'none') ? 'block' : 'none';
 }
 
-function addBook() {  
+function submitBookData(buttonClassList) {
     let title = document.getElementById('input-title').value;
     let author = document.getElementById('input-author').value;
     if (title.length > 0 && author.length > 0) {
-        fetchAPI('insert', addToBookView, APIKey, title, author);
+        if (buttonClassList.contains('add')) {
+            buttonClassList.remove('add');
+            fetchAPI('insert', getBooks, APIKey, title, author);
+        }
+        else if (buttonClassList.contains('modify')) {
+            buttonClassList.remove('modify');
+            let id = buttonClassList;
+            fetchAPI('update', getBooks, APIKey, title, author, id);
+        }
     }
     else {
         alert('Both "Book Title" and "Author\'s name" are mandatory fields!');
     }
 }
 
-function addToBookView(data) {
+function getBooks(data) {
     if (data.status === 'success') {
-        var bookView = document.getElementById('book-list');
-        bookView.innerHTML += '<tr id="' + data.id + '"><td class="id">' + data.id + '</td><td class="author">' + document.getElementById('input-author').value + '</td><td class="title">' + document.getElementById('input-title').value + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="editBook(' + data.id + ')"></i><i class="fa fa-trash fa-2x" onclick="toBeDeleted(' + data.id + ')"></i></td></tr>';
+        fetchAPI('select', updateBookView, APIKey);
+        
         document.getElementById('input-title').value = '';
-        document.getElementById('input-author').value = '';
+        document.getElementById('input-author').value = '';        
     }
+    closeForm();
+}
+
+function updateBookView(booksData) {
+    if (booksData.status === 'success') {
+        var bookView = document.getElementById('book-list');
+        let htmlElement = '';
+        booksData.data.forEach(book => {
+            htmlElement += '<tr id="' + book.id + '"><td class="id">' + book.id + '</td><td class="author">' + book.author + '</td><td class="title">' + book.title + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="setupForm(\'input-form\', \'modify\', ' + book.id + ')"></i><i class="fa fa-trash fa-2x" onclick="toBeDeleted(' + book.id + ')"></i></td></tr>';
+        });
+        bookView.innerHTML = htmlElement;
+    }
+}
+
+function modifyBook(data) {
+    if (data.status === 'success') {
+
+    }
+
+    closeForm();
 }
 
 function toBeDeleted(bookId) {
@@ -149,14 +192,13 @@ function removeFromBookView(data) {
     }
 }
 
-function closeForm(form) {
-    document.getElementById(form.id).style.display = 'none';
+function closeForm() {
+    document.getElementById('input-form').style.display = 'none';
 }
 
-var standardBody = document.body.innerHTML;
 function adjustContent() {
     if (window.innerWidth < 1000) {
-        document.body.innerHTML = '<p style="color:white; font-size: 10vmin; margin: 10%">In order to be able to use such a great tool, you will need to buy a proper device with a decent screen size.</p><script src="script.js"></script>'
+        document.body.innerHTML = '<p style="color:white; font-size: 8vmin; margin: 10%">In order to be able to use such a great tool, you will need to buy a proper device with a decent screen size.</p></script>'
     }
     else {
         document.body.innerHTML = standardBody;
