@@ -8,12 +8,9 @@ window.dispatchEvent(new Event('resize'));
 
 function initialize() {    
     standardBody = document.body.innerHTML;
-    APIUrl = 'https://www.forverkliga.se/JavaScript/api/crud.php?';
+    APIUrl = 'https://www.forverkliga.se/JavaScript/api/crud.php?';    
     
-    
-    document.getElementById('request-api-key-button').addEventListener('click', function() {
-        fetchAPI('requestKey', updateAPIKey); 
-    });
+    document.getElementById('request-api-key-button').addEventListener('click', requestNewAPIKey);
     document.getElementById('add-button').addEventListener('click', function() {
         setupForm('add');
     });
@@ -27,6 +24,10 @@ function initialize() {
     });    
     document.getElementById('close').addEventListener('click', closeForm);
     window.addEventListener('resize', adjustContent);
+}
+
+function requestNewAPIKey() {
+    fetchAPI('requestKey', updateAPIKey);
 }
 
 let counter = 1;
