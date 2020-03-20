@@ -1,21 +1,13 @@
 var APIKey, localStorage, APIUrl, standardBody;
 
-<<<<<<< HEAD
 localStorage.clear();
 localStorage = window.localStorage;
 window.onload = initialize();
 fetchAPI('requestKey', updateAPIKey);
 window.dispatchEvent(new Event('resize'));
-=======
-standardBody = document.body.innerHTML;
-adjustContent();
->>>>>>> de7843108cd4e26b9e6d05093b7151989e3d06e8
 
-if (document.body.innerHTML === standardBody) {
-    window.onload = initialize();
-}
-
-function initialize() {       
+function initialize() {    
+    standardBody = document.body.innerHTML;
     APIUrl = 'https://www.forverkliga.se/JavaScript/api/crud.php?';
     
     
@@ -33,14 +25,8 @@ function initialize() {
     document.getElementById('submit-button').addEventListener('click', function() {
         submitBookData(this.classList);
     });    
-<<<<<<< HEAD
     document.getElementById('close').addEventListener('click', closeForm);
     window.addEventListener('resize', adjustContent);
-=======
-    document.getElementById('close').addEventListener('click', closeForm); 
-    window.addEventListener('resize', adjustContent);
- 
->>>>>>> de7843108cd4e26b9e6d05093b7151989e3d06e8
 }
 
 let counter = 1;
