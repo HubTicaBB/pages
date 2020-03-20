@@ -1,14 +1,14 @@
 var APIKey, localStorage, APIUrl, standardBody;
 
 window.onload = initialize();
+window.addEventListener('resize', adjustContent);
 
 function initialize() {    
     standardBody = document.body.innerHTML;
     APIUrl = 'https://www.forverkliga.se/JavaScript/api/crud.php?';
     localStorage = window.localStorage;
     localStorage.clear();
-
-    window.addEventListener('resize', adjustContent);
+    
     fetchAPI('requestKey', updateAPIKey);
     document.getElementById('request-api-key-button').addEventListener('click', function() {
         fetchAPI('requestKey', updateAPIKey); 
@@ -72,21 +72,26 @@ function getQuerystring(op, key, title, author, id) {
 function updateStatus(op, data) {
     if (op !== 'select') {
         let statusLabel = document.getElementById('status');
-        statusLabel.textContent = 'Operation ' + op + ': ' + data.status;
-        if (data.status === 'success') {
-            statusLabel.style.background = '#97c98b';
-        } 
-        else {
-            statusLabel.textContent += ' - ' + data.message;
-            statusLabel.style.background = 'pink';
-        } 
+        if (statusLabel) {
+            statusLabel.textContent = 'Operation ' + op + ': ' + data.status;
+            if (data.status === 'success') {
+                statusLabel.style.background = '#97c98b';
+            } 
+            else {
+                statusLabel.textContent += ' - ' + data.message;
+                statusLabel.style.background = 'pink';
+            } 
+        }
     }
 }
 
 function updateAPIKey(data) {
     APIKey = data.key;
     localStorage.setItem('item' + localStorage.length, APIKey);  
-    document.getElementById('current-api-key').textContent = APIKey;  
+    let APIKeyField = document.getElementById('current-api-key');
+    if (APIKeyField) {
+        APIKeyField.textContent = APIKey;
+    }  
 }
 
 function validateInputDynamically(inputField) {
