@@ -90,7 +90,8 @@ function updateStatus(op, data) {
 function updateAPIKey(data) {
     if (data) {
         APIKey = data.key;
-        localStorage.setItem('item' + localStorage.length, APIKey); 
+        localStorage.setItem('item' + localStorage.length, APIKey);
+        fetchAPI('select', updateBookView, APIKey);
     }      
     let APIKeyField = document.getElementById('current-api-key');
     if (APIKeyField) {
@@ -98,7 +99,6 @@ function updateAPIKey(data) {
         let lastAPIKey = 'item'+lastStorageIndex;
         APIKeyField.textContent = (data) ? APIKey : localStorage.getItem(lastAPIKey); 
     }
-    console.log('Key must be ' + APIKeyField.textContent);
 }
 
 function validateInputDynamically(inputField) {
@@ -163,7 +163,7 @@ function submitBookData(buttonClassList) {
 }
 
 function getBooks(data) {
-    if (data.status === 'success') {
+    if ((data && data.status === 'success') || !data) {
         fetchAPI('select', updateBookView, APIKey);
         
         document.getElementById('input-title').value = '';
@@ -179,7 +179,9 @@ function updateBookView(booksData) {
         booksData.data.forEach(book => {
             htmlElement += '<tr id="' + book.id + '"><td class="id">' + book.id + '</td><td class="author">' + book.author + '</td><td class="title">' + book.title + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="setupForm(\'modify\', ' + book.id + ')"></i><i class="fa fa-trash fa-2x" onclick="toBeDeleted(' + book.id + ')"></i></td></tr>';
         });
-        bookView.innerHTML = htmlElement;
+        if(bookView) {
+            bookView.innerHTML = htmlElement;
+        }
     }
 }
 
@@ -202,5 +204,6 @@ function adjustContent() {
         document.body.innerHTML = standardBody;
         initialize();
         updateAPIKey();
+        getBooks();
     }
 }
