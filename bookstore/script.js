@@ -18,7 +18,7 @@ function initialize() {
     });
     document.querySelectorAll('.input-text').forEach(element => {
         element.addEventListener('input', function() {
-            validateInput(element);
+            validateInputDynamically(element);
         })
     });    
     document.getElementById('submit-button').addEventListener('click', function() {
@@ -89,7 +89,7 @@ function updateAPIKey(data) {
     document.getElementById('current-api-key').textContent = APIKey;  
 }
 
-function validateInput(inputField) {
+function validateInputDynamically(inputField) {
     inputField.style.outlineColor = (inputField.value.length > 0) ? 'green' : 'red';
 }
 
@@ -170,26 +170,11 @@ function updateBookView(booksData) {
     }
 }
 
-function modifyBook(data) {
-    if (data.status === 'success') {
-
-    }
-
-    closeForm();
-}
-
 function toBeDeleted(bookId) {
     var bookToDelete = document.getElementById(bookId);
     bookToDelete.classList.add('toBeDeleted');
     alert('The book (id: ' + bookToDelete.id + ') is going to be permanently deleted.');
-    fetchAPI('delete', removeFromBookView, APIKey, undefined, undefined, bookId);
-}
-
-function removeFromBookView(data) {
-    if (data.status === 'success') {        
-        var bookToDelete = document.getElementsByClassName('toBeDeleted')[0];
-        bookToDelete.parentNode.removeChild(bookToDelete);
-    }
+    fetchAPI('delete', getBooks, APIKey, undefined, undefined, bookId);
 }
 
 function closeForm() {
