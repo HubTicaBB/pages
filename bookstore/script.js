@@ -178,7 +178,7 @@ function updateBookView(booksData) {
         var bookView = document.getElementById('book-list');
         let htmlElement = '';
         booksData.data.forEach(book => {
-            htmlElement += '<tr id="' + book.id + '"><td class="id">' + book.id + '</td><td class="author">' + book.author + '</td><td class="title">' + book.title + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="setupForm(\'modify\', ' + book.id + ')"></i><i class="fa fa-trash fa-2x" onclick="toBeDeleted(' + book.id + ')"></i></td></tr>';
+            htmlElement += '<tr id="' + book.id + '"><td class="id">' + book.id + '</td><td class="author">' + book.author + '</td><td class="title">' + book.title + '</td><td class="actions"><i class="fa fa-edit fa-2x" title="Edit" onclick="setupForm(\'modify\', ' + book.id + ')"></i><i class="fa fa-trash fa-2x" title="Remove" onclick="toBeDeleted(' + book.id + ')"></i></td></tr>';
         });
         if(bookView) {
             bookView.innerHTML = htmlElement;
