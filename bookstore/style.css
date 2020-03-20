@@ -149,7 +149,8 @@ thead {
 
 tbody {
     display: block;
-    height: 500px;
+    height: 55vh;
+    top: 0px;
     width: 70vw;
     overflow: auto;
 }
