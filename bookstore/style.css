@@ -114,7 +114,6 @@ button:focus {
 }
 
 #status {
-    background-color: lightslategrey;
     top: 20px;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
     width: 55%;

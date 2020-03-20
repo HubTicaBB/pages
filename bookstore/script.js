@@ -1,15 +1,16 @@
 var APIKey, localStorage, APIUrl, standardBody;
 
+localStorage.clear();
+localStorage = window.localStorage;
 window.onload = initialize();
-window.addEventListener('resize', adjustContent);
+fetchAPI('requestKey', updateAPIKey);
+window.dispatchEvent(new Event('resize'));
 
 function initialize() {    
     standardBody = document.body.innerHTML;
     APIUrl = 'https://www.forverkliga.se/JavaScript/api/crud.php?';
-    localStorage = window.localStorage;
-    localStorage.clear();
     
-    fetchAPI('requestKey', updateAPIKey);
+    
     document.getElementById('request-api-key-button').addEventListener('click', function() {
         fetchAPI('requestKey', updateAPIKey); 
     });
@@ -24,7 +25,8 @@ function initialize() {
     document.getElementById('submit-button').addEventListener('click', function() {
         submitBookData(this.classList);
     });    
-    document.getElementById('close').addEventListener('click', closeForm);  
+    document.getElementById('close').addEventListener('click', closeForm);
+    window.addEventListener('resize', adjustContent);
 }
 
 let counter = 1;
@@ -86,12 +88,17 @@ function updateStatus(op, data) {
 }
 
 function updateAPIKey(data) {
-    APIKey = data.key;
-    localStorage.setItem('item' + localStorage.length, APIKey);  
+    if (data) {
+        APIKey = data.key;
+        localStorage.setItem('item' + localStorage.length, APIKey); 
+    }      
     let APIKeyField = document.getElementById('current-api-key');
     if (APIKeyField) {
-        APIKeyField.textContent = APIKey;
-    }  
+        let lastStorageIndex = localStorage.length - 1;
+        let lastAPIKey = 'item'+lastStorageIndex;
+        APIKeyField.textContent = (data) ? APIKey : localStorage.getItem(lastAPIKey); 
+    }
+    console.log('Key must be ' + APIKeyField.textContent);
 }
 
 function validateInputDynamically(inputField) {
@@ -194,5 +201,6 @@ function adjustContent() {
     else {
         document.body.innerHTML = standardBody;
         initialize();
+        updateAPIKey();
     }
 }
