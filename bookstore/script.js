@@ -184,7 +184,7 @@ function closeForm() {
 
 function adjustContent() {
     if (window.innerWidth < 1000) {
-        document.body.innerHTML = '<p style="color:white; font-size: 8vmin; margin: 10%">In order to be able to use such a great tool, you will need to buy a proper device with a decent screen size.</p></script>'
+        document.body.innerHTML = '<p style="color:white; font-size: 8vmin; margin: 10%">In order to be able to use such a great tool, you will need to buy a proper device with a decent screen size.</p><script src="script.js"></script>'
     }
     else {
         document.body.innerHTML = standardBody;
