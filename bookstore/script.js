@@ -91,7 +91,7 @@ function updateAPIKey(data) {
     if (data) {
         APIKey = data.key;
         localStorage.setItem('item' + localStorage.length, APIKey);
-        fetchAPI('select', updateBookView, APIKey);
+        fetchAPI('select', updateBookView, data.key);
     }      
     let APIKeyField = document.getElementById('current-api-key');
     if (APIKeyField) {
