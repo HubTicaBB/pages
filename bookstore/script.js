@@ -14,7 +14,7 @@ function initialize() {
         fetchAPI('requestKey', updateAPIKey); 
     });
     document.getElementById('add-button').addEventListener('click', function() {
-        setupForm('input-form', 'add');
+        setupForm('add');
     });
     document.querySelectorAll('.input-text').forEach(element => {
         element.addEventListener('input', function() {
@@ -93,8 +93,8 @@ function validateInputDynamically(inputField) {
     inputField.style.outlineColor = (inputField.value.length > 0) ? 'green' : 'red';
 }
 
-function setupForm(formId, action, bookId) {
-    var form = document.getElementById(formId);
+function setupForm(action, bookId) {
+    var form = document.getElementById('input-form');
     if (!form.classList.contains(action)) {
         form.classList.add(action);
     }
@@ -140,6 +140,7 @@ function submitBookData(buttonClassList) {
         }
         else if (buttonClassList.contains('modify')) {
             buttonClassList.remove('modify');
+            if (buttonClassList.length > 1) buttonClassList.remove(buttonClassList[0]);
             let id = buttonClassList;
             fetchAPI('update', getBooks, APIKey, title, author, id);
         }
@@ -164,7 +165,7 @@ function updateBookView(booksData) {
         var bookView = document.getElementById('book-list');
         let htmlElement = '';
         booksData.data.forEach(book => {
-            htmlElement += '<tr id="' + book.id + '"><td class="id">' + book.id + '</td><td class="author">' + book.author + '</td><td class="title">' + book.title + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="setupForm(\'input-form\', \'modify\', ' + book.id + ')"></i><i class="fa fa-trash fa-2x" onclick="toBeDeleted(' + book.id + ')"></i></td></tr>';
+            htmlElement += '<tr id="' + book.id + '"><td class="id">' + book.id + '</td><td class="author">' + book.author + '</td><td class="title">' + book.title + '</td><td class="actions"><i class="fa fa-edit fa-2x" onclick="setupForm(\'modify\', ' + book.id + ')"></i><i class="fa fa-trash fa-2x" onclick="toBeDeleted(' + book.id + ')"></i></td></tr>';
         });
         bookView.innerHTML = htmlElement;
     }
